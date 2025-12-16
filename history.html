@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — About</title>
+
+  <!-- KEEP favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#how">How It Works</a>
+          <a href="index.html#testimonials">Testimonials</a>
+          <a href="index.html#contact">Contact</a>
+          <a class="nav-cta" href="support.html">Contact Page</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>About NippuKoodi</h1>
+        <p>
+          NippuKoodi was founded to connect skilled workers with companies that need reliable staffing.
+          The focus is safety, professionalism, and speed — with workers ready on day one.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h3>Mission</h3>
+            <p>
+              Provide flexible staffing solutions for businesses while creating opportunities for workers seeking reliable employment.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Approach</h3>
+            <p>
+              Handle recruitment, vetting, and placement logistics so companies can focus on operations while trusted personnel are provided efficiently.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-award"></i></div>
+            <h3>Commitment</h3>
+            <p>
+              Maintain quality at scale: consistent verification, clear communication, and ongoing support after placement.
+            </p>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="card">
+          <h3 style="margin-top:0;">What you can expect</h3>
+          <p style="color:var(--muted); margin:0;">
+            Clear timelines, realistic expectations, and a reliable process that respects both workers and clients.
+            If you’re ready to work together, contact us and we’ll guide you through the next step.
+          </p>
+
+          <div class="form-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="support.html">Contact Us</a>
+            <a class="btn btn-ghost" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
