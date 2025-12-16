@@ -14,7 +14,6 @@
     };
 
     toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
-
     $$("#siteNav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
 
     document.addEventListener("click", (e) => {
@@ -80,7 +79,6 @@
   }
 
   function initReveal() {
-    // only if body opted in
     if (!document.body.hasAttribute("data-animate")) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -105,50 +103,48 @@
   }
 
   function initActiveNav() {
-  const nav = document.getElementById("siteNav");
-  if (!nav) return;
+    const nav = document.getElementById("siteNav");
+    if (!nav) return;
 
-  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
-  if (!links.length) return;
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
 
-  const sections = links
-    .map((a) => document.querySelector(a.getAttribute("href")))
-    .filter(Boolean);
+    const sections = links
+      .map((a) => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
 
-  if (!sections.length) return;
+    if (!sections.length) return;
 
-  const setActive = (id) => {
-    links.forEach((a) => {
-      a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`);
-    });
-  };
+    const setActive = (id) => {
+      links.forEach((a) => {
+        a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`);
+      });
+    };
 
-  const io = new IntersectionObserver(
-    (entries) => {
-      // pick the most visible intersecting section
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-      if (visible && visible.target && visible.target.id) {
-        setActive(visible.target.id);
-      }
-    },
-    { threshold: [0.15, 0.25, 0.4, 0.6], rootMargin: "-15% 0px -70% 0px" }
-  );
+        if (visible && visible.target && visible.target.id) {
+          setActive(visible.target.id);
+        }
+      },
+      { threshold: [0.15, 0.25, 0.4, 0.6], rootMargin: "-15% 0px -70% 0px" }
+    );
 
-  sections.forEach((s) => io.observe(s));
+    sections.forEach((s) => io.observe(s));
 
- // default on load (use hash if present, else About)
-const hash = window.location.hash.replace("#", "");
-if (hash) setActive(hash);
-else setActive("about");
-}
+    const hash = window.location.hash.replace("#", "");
+    if (hash) setActive(hash);
+    else setActive("about");
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initNav();
-  initHeroSlider();
-  initReveal();
-  initActiveNav();
-});
+  document.addEventListener("DOMContentLoaded", () => {
+    initNav();
+    initHeroSlider();
+    initReveal();
+    initActiveNav();
+  });
 })();
