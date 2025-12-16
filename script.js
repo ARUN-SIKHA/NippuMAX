@@ -9,7 +9,7 @@
 
     const setOpen = (open) => {
       nav.classList.toggle("is-open", open);
-      toggle.classList.toggle("is-open", open); // ✅ triggers hamburger -> X animation
+      toggle.classList.toggle("is-open", open); // ✅ needed for hamburger → X
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     };
 
@@ -53,15 +53,14 @@
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Fix slide1 accidentally being the logo by using slide1.jpg + fallback to slide2.jpg.
-    // If slide1.jpg doesn't exist, it will fall back (and NOT show logo.png).
+    // slide1 fallback: never fall back to logo
     const slide1 = $("#slide1img");
     if (slide1) {
       slide1.addEventListener(
         "error",
         () => {
           const fallback = slide1.getAttribute("data-fallback");
-          if (fallback && slide1.src.indexOf(fallback) === -1) slide1.src = fallback;
+          if (fallback && !slide1.src.includes(fallback)) slide1.src = fallback;
         },
         { once: true }
       );
@@ -72,15 +71,12 @@
       .filter(Boolean)
       .map((img) => img.getAttribute("src"));
 
-    // Preload, then start
     preloadImages(imgs).finally(() => {
       let index = 0;
       slides.forEach((s, i) => s.classList.toggle("is-active", i === 0));
-
-      if (reduceMotion) return; // no autoplay for reduced motion
+      if (reduceMotion) return;
 
       const intervalMs = 4500;
-
       setInterval(() => {
         slides[index].classList.remove("is-active");
         index = (index + 1) % slides.length;
