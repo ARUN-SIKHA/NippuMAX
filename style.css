@@ -36,6 +36,9 @@
   /* Section sizing */
   --section-y: 80px;
   --section-y-sm: 64px;
+
+  /* Interaction easing */
+  --ease-out: cubic-bezier(.2,.8,.2,1);
 }
 
 *{box-sizing:border-box}
@@ -96,6 +99,7 @@ h3,h4{letter-spacing:-0.01em}
   background:rgba(255,255,255,.92);
   backdrop-filter: blur(10px);
   border-bottom:1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(16,24,40,.06);
 }
 .header-inner{
   height:var(--header-h);
@@ -138,8 +142,11 @@ h3,h4{letter-spacing:-0.01em}
   color:#192033;
   padding:10px 10px;
   border-radius:12px;
+  line-height: 1;
+  transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
 }
 .nav a:hover{background:rgba(11,91,211,.08)}
+.nav a:active{transform: translateY(1px)}
 .nav .nav-cta{
   background:var(--primary);
   color:#fff;
@@ -162,11 +169,13 @@ h3,h4{letter-spacing:-0.01em}
   background:#111;
   margin:0 auto;
   position:relative;
+  transition: background 180ms ease;
 }
 .nav-toggle-bars::before,.nav-toggle-bars::after{
   content:"";
   position:absolute; left:0;
   width:18px; height:2px; background:#111;
+  transition: transform 180ms ease, top 180ms ease;
 }
 .nav-toggle-bars::before{top:-6px}
 .nav-toggle-bars::after{top:6px}
@@ -201,6 +210,8 @@ h3,h4{letter-spacing:-0.01em}
     visibility:hidden;
 
     transition: opacity 220ms ease, transform 220ms ease, visibility 0s linear 220ms;
+    max-width: 520px;
+    margin: 0 auto;
   }
 
   .nav.is-open{
@@ -215,10 +226,7 @@ h3,h4{letter-spacing:-0.01em}
 }
 
 /* Hamburger → X animation */
-.nav-toggle-bars{ transition: background 180ms ease; }
 .nav-toggle.is-open .nav-toggle-bars{ background: transparent; }
-.nav-toggle-bars::before,
-.nav-toggle-bars::after{ transition: transform 180ms ease, top 180ms ease; }
 .nav-toggle.is-open .nav-toggle-bars::before{ top: 0; transform: rotate(45deg); }
 .nav-toggle.is-open .nav-toggle-bars::after{ top: 0; transform: rotate(-45deg); }
 
@@ -303,9 +311,13 @@ h3,h4{letter-spacing:-0.01em}
   font-weight: 850;
   border:1px solid transparent;
   cursor:pointer;
-  transition: transform .12s ease, background .2s ease, border-color .2s ease;
+  transition: transform 140ms var(--ease-out),
+              background 220ms var(--ease-out),
+              border-color 220ms var(--ease-out),
+              box-shadow 220ms var(--ease-out);
 }
-.btn:active{transform: scale(.98)}
+.btn:hover{ transform: translateY(-1px); }
+.btn:active{ transform: translateY(0) scale(.98); }
 .btn-primary{background: var(--primary); color:#fff}
 .btn-primary:hover{background: var(--primary2)}
 .btn-ghost{
@@ -444,6 +456,18 @@ hr.sep{
   border:1px solid var(--line);
   border-radius: var(--radius);
   padding:var(--s-5);
+  position: relative;
+}
+.quote::before{
+  content:"“";
+  position:absolute;
+  top:-14px;
+  left:18px;
+  font-size:72px;
+  line-height:1;
+  color: rgba(11,91,211,.10);
+  font-family: var(--font-serif);
+  pointer-events:none;
 }
 .quote blockquote{
   margin:0;
@@ -548,28 +572,36 @@ hr.sep{
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .hero-slide{transition:none}
-  .btn{transition:none}
-}
-
-/* Step 5: Header & Nav tightening */
-.site-header{
-  box-shadow: 0 10px 30px rgba(16,24,40,.06);
-}
-
-.nav a{
-  line-height: 1;
-}
-
-@media (max-width: 920px){
-  .nav{
-    max-width: 520px;
-    margin: 0 auto;
+  .btn, .card, .step, .quote, .form, .metric, .nav a{
+    transition: none !important;
   }
 }
 
-/* ===== PHASE 2: Trust strip + testimonial mark ===== */
+/* cards: subtle lift + shadow on hover (desktop only) */
+@media (hover:hover){
+  .card, .step, .quote, .form{
+    transition: transform 180ms var(--ease-out),
+                box-shadow 220ms var(--ease-out),
+                border-color 220ms var(--ease-out);
+  }
+  .card:hover, .step:hover, .quote:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(16,24,40,.10);
+    border-color: rgba(11,91,211,.18);
+  }
+  .metric{
+    transition: transform 180ms var(--ease-out),
+                background 220ms var(--ease-out),
+                border-color 220ms var(--ease-out);
+  }
+  .metric:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.16);
+    border-color: rgba(255,255,255,.26);
+  }
+}
 
-/* Trust strip */
+/* ===== PHASE 2: Trust strip ===== */
 .trust-strip{
   padding: var(--s-6) 0;
 }
@@ -586,98 +618,81 @@ hr.sep{
   text-align:center;
 }
 
-/* Testimonial quote mark */
-.quote{ position:relative; }
-.quote::before{
-  content:"“";
-  position:absolute;
-  top:-14px;
-  left:18px;
-  font-size:72px;
-  line-height:1;
-  color: rgba(11,91,211,.10);
-  font-family: var(--font-serif);
-  pointer-events:none;
+/* ===== PHASE 2: Why section + Transparency block ===== */
+.why .section-head p{
+  max-width: var(--reading);
+  margin-inline: auto;
 }
 
-/* ===== PHASE 3A: Interaction Polish (append at end) ===== */
-
-/* smoother general easing */
-:root{
-  --ease-out: cubic-bezier(.2,.8,.2,1);
+.transparency{
+  margin-top: var(--s-7);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-6);
+  box-shadow: 0 10px 25px rgba(16,24,40,.06);
 }
 
-/* buttons feel more “physical” */
-.btn{
-  transition: transform 140ms var(--ease-out),
-              background 220ms var(--ease-out),
-              border-color 220ms var(--ease-out),
-              box-shadow 220ms var(--ease-out);
-}
-.btn:hover{
-  transform: translateY(-1px);
-}
-.btn:active{
-  transform: translateY(0) scale(.98);
+.transparency h3{
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0 0 var(--s-4) 0;
+  letter-spacing: -0.015em;
 }
 
-/* cards: subtle lift + shadow on hover (desktop only) */
-@media (hover:hover){
-  .card, .step, .quote, .form{
-    transition: transform 180ms var(--ease-out),
-                box-shadow 220ms var(--ease-out),
-                border-color 220ms var(--ease-out);
+.transparency-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+.transparency-item{
+  padding: var(--s-4);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(11,91,211,.04);
+}
+
+.transparency-item strong{
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.transparency-item p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.transparency-actions{
+  display: flex;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px){
+  .transparency{
+    padding: var(--s-5);
   }
-
-  .card:hover, .step:hover, .quote:hover{
-    transform: translateY(-3px);
-    box-shadow: 0 16px 40px rgba(16,24,40,.10);
-    border-color: rgba(11,91,211,.18);
-  }
-}
-
-/* nav links: clearer hover + active feel */
-.nav a{
-  transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
-}
-.nav a:active{
-  transform: translateY(1px);
-}
-
-/* metrics: slight “glass” upgrade on hover */
-@media (hover:hover){
-  .metric{
-    transition: transform 180ms var(--ease-out),
-                background 220ms var(--ease-out),
-                border-color 220ms var(--ease-out);
-  }
-  .metric:hover{
-    transform: translateY(-2px);
-    background: rgba(255,255,255,.16);
-    border-color: rgba(255,255,255,.26);
+  .transparency-grid{
+    grid-template-columns: 1fr;
   }
 }
 
-/* reduced motion safety */
-@media (prefers-reduced-motion: reduce){
-  .btn, .card, .step, .quote, .form, .metric, .nav a{
-    transition: none !important;
-  }
-}
-
-/* ===== PHASE 3A: Section reveal (premium, subtle) ===== */
+/* ===== PHASE 3A: Section reveal ===== */
 body[data-animate] .reveal{
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
   will-change: opacity, transform;
 }
-
 body[data-animate] .reveal.is-visible{
   opacity: 1;
   transform: translateY(0);
 }
-
 @media (prefers-reduced-motion: reduce){
   body[data-animate] .reveal{
     opacity: 1 !important;
