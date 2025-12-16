@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — Process</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="stylesheet" href="style.css?v=1004">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body data-animate>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#services">Services</a>
+          <a href="companies.html">For Companies</a>
+          <a href="workers.html">For Workers</a>
+          <a href="process.html" aria-current="page">Process</a>
+          <a class="nav-cta" href="support.html">Contact Page</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>The NippuKoodi Process</h1>
+        <p>
+          A clear, repeatable workflow designed to remove uncertainty for both workers and companies.
+        </p>
+
+        <div class="page-actions">
+          <a class="btn btn-primary" href="companies.html">Company Flow</a>
+          <a class="btn btn-ghost" href="workers.html">Worker Flow</a>
+          <a class="btn btn-ghost" href="support.html">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>Step-by-step</h2>
+          <p>Simple on the outside, disciplined behind the scenes.</p>
+        </div>
+
+        <div class="steps" style="grid-template-columns: 1fr;">
+          <div class="step">
+            <div class="step-badge">1</div>
+            <div class="step-body">
+              <h3>Intake</h3>
+              <p>We collect role requirements (company) or availability/skills (worker) with clear expectations.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-badge">2</div>
+            <div class="step-body">
+              <h3>Verification</h3>
+              <p>Basic screening and suitability checks so placements are dependable.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-badge">3</div>
+            <div class="step-body">
+              <h3>Match</h3>
+              <p>We align workers with roles based on fit, urgency, and readiness.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-badge">4</div>
+            <div class="step-body">
+              <h3>Onboarding</h3>
+              <p>Clear start details, expectations, and communication paths are set before day one.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-badge">5</div>
+            <div class="step-body">
+              <h3>Support</h3>
+              <p>We remain reachable to prevent confusion and keep standards consistent.</p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="index.html#contact">Start Now</a>
+          <a class="btn btn-ghost" href="companies.html">For Companies</a>
+          <a class="btn btn-ghost" href="workers.html">For Workers</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="companies.html">For Companies</a>
+        <a href="workers.html">For Workers</a>
+        <a href="process.html" aria-current="page">Process</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
