@@ -354,6 +354,14 @@ h3,h4{letter-spacing:-0.01em}
   line-height: 1.62;
 }
 
+/* Phase 4: performance hint (safe, optional) */
+@supports (content-visibility: auto){
+  .section, .cta-strip, .site-footer{
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+  }
+}
+
 /* Grids */
 .grid-3{
   display:grid;
