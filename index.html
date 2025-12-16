@@ -5,10 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NippuKoodi</title>
 
+  <!-- Phase 4: SEO -->
+  <meta name="description" content="NippuKoodi connects vetted skilled workers with trusted companies — fast placements, clear process, reliable staffing." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Phase 4: Canonical (update if your live URL changes) -->
+  <link rel="canonical" href="https://arun-sikha.github.io/NippuTest/index.html" />
+
+  <!-- Phase 4: Open Graph / Twitter -->
+  <meta property="og:title" content="NippuKoodi" />
+  <meta property="og:description" content="Verified workers. Clear process. Reliable staffing for teams that need results — not delays." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://arun-sikha.github.io/NippuTest/index.html" />
+  <meta property="og:image" content="https://arun-sikha.github.io/NippuTest/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="NippuKoodi" />
+  <meta name="twitter:description" content="Verified workers. Clear process. Reliable staffing — without delays." />
+  <meta name="twitter:image" content="https://arun-sikha.github.io/NippuTest/logo.png" />
+
+  <!-- KEEP favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
 
-  <link rel="stylesheet" href="style.css?v=1004">
+  <!-- Phase 4: performance -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+  <link rel="stylesheet" href="style.css?v=1005">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Phase 4: Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NippuKoodi",
+    "url": "https://arun-sikha.github.io/NippuTest/",
+    "logo": "https://arun-sikha.github.io/NippuTest/logo.png",
+    "description": "NippuKoodi connects vetted skilled workers with trusted companies — fast placements, clear process, reliable staffing."
+  }
+  </script>
+
+  <!-- Phase 4: privacy-first analytics hook (optional)
+  <script defer data-domain="YOUR_DOMAIN_HERE" src="https://plausible.io/js/script.js"></script>
+  -->
 </head>
 <body data-animate>
 
@@ -17,13 +57,13 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="NippuKoodi Home">
-        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" width="34" height="34" decoding="async" />
         <span class="brand-text">NippuKoodi</span>
       </a>
 
       <div class="nav-wrap">
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-          <span class="nav-toggle-bars"></span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
         </button>
 
         <nav class="nav" id="siteNav" aria-label="Main navigation">
@@ -47,15 +87,22 @@
     <section class="hero" aria-label="Hero">
       <div class="hero-media">
         <div class="hero-slide is-active">
-          <img id="slide1img" src="slide1.jpg" data-fallback="slide2.jpg" alt="NippuKoodi staffing team at work" />
+          <img
+            id="slide1img"
+            src="slide1.jpg"
+            data-fallback="slide2.jpg"
+            alt="NippuKoodi staffing team at work"
+            loading="eager"
+            decoding="async"
+          />
         </div>
 
         <div class="hero-slide">
-          <img src="slide2.jpg" alt="Workforce and industry operations" />
+          <img src="slide2.jpg" alt="Workforce and industry operations" loading="lazy" decoding="async" />
         </div>
 
         <div class="hero-slide">
-          <img src="slide3.jpg" alt="Trusted staffing partnership" />
+          <img src="slide3.jpg" alt="Trusted staffing partnership" loading="lazy" decoding="async" />
         </div>
 
         <div class="hero-overlay" aria-hidden="true"></div>
@@ -359,11 +406,17 @@
           <p>Tell us what you need — we’ll respond as soon as possible.</p>
         </div>
 
+        <noscript>
+          <div class="container" style="margin-bottom: 16px;">
+            <p class="form-note">JavaScript is disabled. The contact form will still submit normally.</p>
+          </div>
+        </noscript>
+
         <form class="form" id="contactForm" data-formspree="mnnekpke" action="https://formspree.io/f/mnnekpke" method="POST">
           <div class="form-row">
             <div>
               <label for="role">I am a</label>
-              <select id="role" name="role" required>
+              <select id="role" name="role" required autocomplete="off">
                 <option value="" selected disabled>Select one</option>
                 <option value="Company">Company</option>
                 <option value="Worker">Worker</option>
@@ -372,7 +425,7 @@
             </div>
             <div>
               <label for="topic">Topic</label>
-              <select id="topic" name="topic" required>
+              <select id="topic" name="topic" required autocomplete="off">
                 <option value="" selected disabled>Select one</option>
                 <option value="Hiring workers">Hiring workers</option>
                 <option value="Joining as a worker">Joining as a worker</option>
@@ -384,11 +437,11 @@
           <div class="form-row" style="margin-top:12px;">
             <div>
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
             </div>
           </div>
 
@@ -399,6 +452,7 @@
 
           <!-- optional metadata -->
           <input type="hidden" name="page" value="index" />
+          <input type="hidden" name="_subject" value="New message from NippuKoodi (index)" />
 
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Send Message</button>
