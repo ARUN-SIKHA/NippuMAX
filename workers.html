@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — For Workers</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="stylesheet" href="style.css?v=1004">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body data-animate>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="process.html">Process</a>
+          <a href="companies.html">For Companies</a>
+          <a href="workers.html" aria-current="page">For Workers</a>
+          <a class="nav-cta" href="support.html">Contact Page</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>For Workers</h1>
+        <p>
+          Join the vetted workforce. Clear expectations, trusted companies, and support during placements.
+        </p>
+
+        <div class="page-actions">
+          <a class="btn btn-primary" href="index.html?role=Worker&topic=Joining%20as%20a%20worker#contact">Join the Workforce</a>
+          <a class="btn btn-ghost" href="process.html">See the Process</a>
+          <a class="btn btn-ghost" href="support.html">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>What to expect</h2>
+          <p>A professional process that respects your time and sets expectations clearly.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
+            <h3>Clear requirements</h3>
+            <p>We outline what’s needed upfront — no surprises.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-building-shield"></i></div>
+            <h3>Trusted companies</h3>
+            <p>We work with companies that value safety and professionalism.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>Support</h3>
+            <p>If something feels unclear, we’re reachable to help.</p>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="index.html?role=Worker&topic=Joining%20as%20a%20worker#contact">Join</a>
+          <a class="btn btn-ghost" href="support.html">Contact Page</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="companies.html">For Companies</a>
+        <a href="workers.html" aria-current="page">For Workers</a>
+        <a href="process.html">Process</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
