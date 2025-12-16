@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi </title>
+
+  <!-- KEEP favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+
+  <link rel="stylesheet" href="style.css?v=1002">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#how">How It Works</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+          <a class="nav-cta" href="support.html">Contact Page</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO SLIDER -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-media">
+        <!-- Slide 1: use slide1.jpg (upload a real photo with this name). If missing, it falls back to slide2.jpg -->
+        <div class="hero-slide is-active">
+          <img id="slide1img" src="slide1.jpg" data-fallback="slide2.jpg" alt="NippuKoodi staffing team at work" />
+        </div>
+
+        <div class="hero-slide">
+          <img src="slide2.jpg" alt="Workforce and industry operations" />
+        </div>
+
+        <div class="hero-slide">
+          <img src="slide3.jpg" alt="Trusted staffing partnership" />
+        </div>
+
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <div class="container">
+            <h1>Connecting Skilled Workers</h1>
+            <p>Reliable, vetted, and ready — staffing you can trust.</p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Get Started</a>
+              <a class="btn btn-ghost" href="history.html">Read Our Story</a>
+            </div>
+
+            <div class="hero-metrics" aria-label="Highlights">
+              <div class="metric">
+                <strong><i class="fa-solid fa-bolt"></i> Fast</strong>
+                <span>Quick placements</span>
+              </div>
+              <div class="metric">
+                <strong><i class="fa-solid fa-user-shield"></i> Vetted</strong>
+                <span>Verified workers</span>
+              </div>
+              <div class="metric">
+                <strong><i class="fa-solid fa-handshake"></i> Reliable</strong>
+                <span>Trusted companies</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About NippuKoodi</h2>
+          <p>
+            NippuKoodi connects skilled workers with trusted companies efficiently and safely. Every worker is vetted and prepared for immediate placement.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <h3>Safety First</h3>
+            <p>Background checks, verification, and clear onboarding expectations.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-stopwatch"></i></div>
+            <h3>Speed</h3>
+            <p>Reduce hiring friction with a streamlined placement process.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-people-arrows"></i></div>
+            <h3>Professional Fit</h3>
+            <p>We match the right worker to the right role — reliably.</p>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div style="text-align:center;">
+          <a class="btn btn-primary" href="history.html">Learn More About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-muted" id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Our Services</h2>
+          <p>A staffing workflow built on trust, speed, and accountability.</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-user-check"></i></div>
+            <h3>Vetted Workers</h3>
+            <p>Thorough checks and verification before placement.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+            <h3>Trusted Companies</h3>
+            <p>Reliable partners to ensure smooth operations.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+            <h3>Quick Placement</h3>
+            <p>Fast turnaround without sacrificing quality.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>Ongoing Support</h3>
+            <p>Guidance for both sides throughout engagement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <h2>How It Works</h2>
+          <p>Simple, clear, and consistent from start to finish.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step">
+            <div class="step-badge">1</div>
+            <div class="step-body">
+              <h3>Apply</h3>
+              <p>Workers submit a profile, skills, and availability.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-badge">2</div>
+            <div class="step-body">
+              <h3>Vetting</h3>
+              <p>Verification and screening to ensure reliability.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-badge">3</div>
+            <div class="step-body">
+              <h3>Placement</h3>
+              <p>We match workers with trusted partner companies.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-badge">4</div>
+            <div class="step-body">
+              <h3>Support</h3>
+              <p>We stay involved to keep everything running smoothly.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-muted" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h2>What People Say</h2>
+          <p>Real feedback from workers and companies.</p>
+        </div>
+
+        <div class="testimonials">
+          <figure class="quote">
+            <blockquote>“NippuKoodi helped me get placed quickly and safely. Highly recommended.”</blockquote>
+            <figcaption>— John D.</figcaption>
+          </figure>
+
+          <figure class="quote">
+            <blockquote>“Reliable, vetted workers every time. It keeps our operations smooth.”</blockquote>
+            <figcaption>— TechCorp</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Get in Touch</h2>
+          <p>Tell us what you need — we’ll respond as soon as possible.</p>
+        </div>
+
+        <form class="form" action="https://formspree.io/f/mnnekpke" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send Message</button>
+            <a class="btn btn-ghost" href="support.html">Use Contact Page</a>
+          </div>
+
+          <p class="form-note">By sending, contact back may happen via email.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // footer year (no extra file needed)
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
