@@ -104,9 +104,51 @@
     targets.forEach((el) => io.observe(el));
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initNav();
-    initHeroSlider();
-    initReveal();
-  });
+  function initActiveNav() {
+  const nav = document.getElementById("siteNav");
+  if (!nav) return;
+
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  if (!links.length) return;
+
+  const sections = links
+    .map((a) => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const setActive = (id) => {
+    links.forEach((a) => {
+      a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`);
+    });
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      // pick the most visible intersecting section
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible && visible.target && visible.target.id) {
+        setActive(visible.target.id);
+      }
+    },
+    { threshold: [0.15, 0.25, 0.4, 0.6], rootMargin: "-15% 0px -70% 0px" }
+  );
+
+  sections.forEach((s) => io.observe(s));
+
+ // default on load (use hash if present, else About)
+const hash = window.location.hash.replace("#", "");
+if (hash) setActive(hash);
+else setActive("about");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initNav();
+  initHeroSlider();
+  initReveal();
+  initActiveNav();
+});
 })();
