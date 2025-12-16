@@ -3,34 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NippuKoodi — Trusted Staffing</title>
-
-  <meta name="description" content="NippuKoodi connects verified workers with trusted companies. Clear process, fast placement, and ongoing support." />
-  <meta name="theme-color" content="#0b5bd3" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="NippuKoodi — Trusted Staffing" />
-  <meta property="og:description" content="Verified workers. Clear process. Reliable staffing for teams that need results — not delays." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="logo.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="NippuKoodi — Trusted Staffing" />
-  <meta name="twitter:description" content="Verified workers. Clear process. Reliable staffing for teams that need results — not delays." />
-  <meta name="twitter:image" content="logo.png" />
+  <title>NippuKoodi</title>
 
   <!-- KEEP favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
 
-  <!-- Preload the first hero image for faster LCP -->
-  <link rel="preload" as="image" href="slide1.jpg" />
-
-  <link rel="stylesheet" href="style.css?v=2001">
+  <link rel="stylesheet" href="style.css?v=1003">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-
 <body data-animate>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -47,6 +29,7 @@
 
         <nav class="nav" id="siteNav" aria-label="Main navigation">
           <a href="#about">About</a>
+          <a href="#why">Why</a>
           <a href="#services">Services</a>
           <a href="#how">How It Works</a>
           <a href="#testimonials">Testimonials</a>
@@ -63,33 +46,26 @@
     <section class="hero" aria-label="Hero">
       <div class="hero-media">
         <div class="hero-slide is-active">
-          <img
-            id="slide1img"
-            src="slide1.jpg"
-            data-fallback="slide2.jpg"
-            alt="NippuKoodi staffing team at work"
-            fetchpriority="high"
-            decoding="async"
-          />
+          <img id="slide1img" src="slide1.jpg" data-fallback="slide2.jpg" alt="NippuKoodi staffing team at work" />
         </div>
 
         <div class="hero-slide">
-          <img src="slide2.jpg" alt="Workforce and industry operations" loading="lazy" decoding="async" />
+          <img src="slide2.jpg" alt="Workforce and industry operations" />
         </div>
 
         <div class="hero-slide">
-          <img src="slide3.jpg" alt="Trusted staffing partnership" loading="lazy" decoding="async" />
+          <img src="slide3.jpg" alt="Trusted staffing partnership" />
         </div>
 
         <div class="hero-overlay" aria-hidden="true"></div>
 
         <div class="hero-content">
           <div class="container">
-            <h1 class="hero-title">Connecting Skilled Workers</h1>
+            <h1>Connecting Skilled Workers</h1>
             <p>Verified workers. Clear process. Reliable staffing for teams that need results — not delays.</p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Request Staffing</a>
+              <a class="btn btn-primary" href="#contact">Get Started</a>
               <a class="btn btn-ghost" href="history.html">Read Our Story</a>
             </div>
 
@@ -112,12 +88,73 @@
       </div>
     </section>
 
-    <!-- TRUST CONTEXT STRIP -->
+    <!-- PHASE 2: TRUST CONTEXT STRIP -->
     <section class="section section-muted trust-strip" aria-label="Where we operate">
       <div class="container trust-strip-inner">
         <p class="trust-strip-text">
           Supporting teams across logistics, construction, operations, and technical roles
         </p>
+      </div>
+    </section>
+
+    <!-- PHASE 2: WHY NIPPUKOODI EXISTS -->
+    <section class="section why" id="why" aria-label="Why NippuKoodi exists">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why NippuKoodi Exists</h2>
+          <p>
+            Hiring shouldn’t feel uncertain. NippuKoodi exists to remove risk from staffing by making verification,
+            expectations, and communication clear — before anyone steps on-site.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h3>Clarity</h3>
+            <p>Role expectations, timelines, and requirements are aligned upfront.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Verification</h3>
+            <p>Workers are vetted so companies don’t gamble with reliability.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h3>Accountability</h3>
+            <p>We stay involved after placement — to keep standards consistent.</p>
+          </div>
+        </div>
+
+        <div class="transparency">
+          <h3>Transparency, up front</h3>
+
+          <div class="transparency-grid">
+            <div class="transparency-item">
+              <strong>What “vetted” means</strong>
+              <p>Identity checks, basic suitability screening, and placement readiness.</p>
+            </div>
+            <div class="transparency-item">
+              <strong>Response time</strong>
+              <p>Most inquiries get a reply within 24–48 hours on business days.</p>
+            </div>
+            <div class="transparency-item">
+              <strong>What we optimize for</strong>
+              <p>Reliable attendance, clear onboarding, and fast placements without skipping checks.</p>
+            </div>
+            <div class="transparency-item">
+              <strong>No uncertainty</strong>
+              <p>If a placement isn’t the right fit, we address it quickly and professionally.</p>
+            </div>
+          </div>
+
+          <div class="transparency-actions">
+            <a class="btn btn-primary" href="#contact">Talk to us</a>
+            <a class="btn btn-ghost" href="history.html">Our story</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -204,8 +241,8 @@
           <li class="step">
             <div class="step-badge">1</div>
             <div class="step-body">
-              <h3>Request</h3>
-              <p>Share staffing needs, timelines, and role requirements.</p>
+              <h3>Apply</h3>
+              <p>Workers submit a profile, skills, and availability.</p>
             </div>
           </li>
           <li class="step">
@@ -219,14 +256,14 @@
             <div class="step-badge">3</div>
             <div class="step-body">
               <h3>Placement</h3>
-              <p>Workers are matched to role needs with clear expectations.</p>
+              <p>We match workers with trusted partner companies.</p>
             </div>
           </li>
           <li class="step">
             <div class="step-badge">4</div>
             <div class="step-body">
               <h3>Support</h3>
-              <p>We remain available to resolve issues and keep everything aligned.</p>
+              <p>We remain available to resolve issues and ensure expectations are met on both sides.</p>
             </div>
           </li>
         </ol>
@@ -263,29 +300,19 @@
     <section class="section" id="contact">
       <div class="container">
         <div class="section-head">
-          <h2>Request Staffing / Contact</h2>
-          <p>Send the details — a response follows with next steps.</p>
+          <h2>Get in Touch</h2>
+          <p>Tell us what you need — we’ll respond as soon as possible.</p>
         </div>
 
-        <form
-          class="form"
-          action="https://formspree.io/f/mnnekpke"
-          method="POST"
-          data-formspree="https://formspree.io/f/mnnekpke"
-        >
-          <!-- Honeypot (spam trap) -->
-          <input class="hp" type="text" name="_gotcha" autocomplete="off" tabindex="-1" aria-hidden="true" />
-
-          <input type="hidden" name="_subject" value="New message from NippuKoodi website" />
-
+        <form class="form" action="https://formspree.io/f/mnnekpke" method="POST">
           <div class="form-row">
             <div>
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
+              <input id="name" name="name" type="text" placeholder="Your name" required />
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
             </div>
           </div>
 
@@ -300,7 +327,6 @@
           </div>
 
           <p class="form-note">We typically respond within 24–48 hours. No spam. No obligations.</p>
-          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -314,6 +340,7 @@
       <div class="footer-links" aria-label="Footer navigation">
         <a href="index.html">Home</a>
         <a href="#about">About</a>
+        <a href="#why">Why</a>
         <a href="#services">Services</a>
         <a href="#how">How It Works</a>
         <a href="#testimonials">Testimonials</a>
@@ -326,17 +353,6 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-  <script src="script.js?v=2001"></script>
-
-  <!-- Minimal JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "NippuKoodi",
-    "url": ".",
-    "logo": "logo.png"
-  }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
