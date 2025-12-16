@@ -162,7 +162,7 @@
     }
   }
 
-  // Phase 3: Smarter contact UX (AJAX submit + status message)
+  // Phase 3/4: Smarter contact UX (AJAX submit + status message)
   function initSmartForms() {
     const forms = $$("form[data-formspree]");
     if (!forms.length) return;
