@@ -9,25 +9,20 @@
 
     const setOpen = (open) => {
       nav.classList.toggle("is-open", open);
-      toggle.classList.toggle("is-open", open); // ✅ needed for hamburger → X
+      toggle.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     };
 
     toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
 
-    // Close on link click (mobile)
-    $$("#siteNav a").forEach((a) => {
-      a.addEventListener("click", () => setOpen(false));
-    });
+    $$("#siteNav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
 
-    // Close if clicking outside
     document.addEventListener("click", (e) => {
       if (!nav.classList.contains("is-open")) return;
       const within = nav.contains(e.target) || toggle.contains(e.target);
       if (!within) setOpen(false);
     });
 
-    // Close on ESC
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setOpen(false);
     });
@@ -53,7 +48,6 @@
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // slide1 fallback: never fall back to logo
     const slide1 = $("#slide1img");
     if (slide1) {
       slide1.addEventListener(
@@ -85,8 +79,34 @@
     });
   }
 
+  function initReveal() {
+    // only if body opted in
+    if (!document.body.hasAttribute("data-animate")) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    const targets = $$(".section, .site-footer");
+    targets.forEach((el) => el.classList.add("reveal"));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    targets.forEach((el) => io.observe(el));
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
     initHeroSlider();
+    initReveal();
   });
 })();
