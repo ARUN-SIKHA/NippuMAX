@@ -44,7 +44,6 @@
     <!-- HERO SLIDER -->
     <section class="hero" aria-label="Hero">
       <div class="hero-media">
-        <!-- Slide 1: use slide1.jpg (upload a real photo with this name). If missing, it falls back to slide2.jpg -->
         <div class="hero-slide is-active">
           <img id="slide1img" src="slide1.jpg" data-fallback="slide2.jpg" alt="NippuKoodi staffing team at work" />
         </div>
@@ -87,25 +86,26 @@
         </div>
       </div>
     </section>
-<!-- PHASE 2: TRUST CONTEXT STRIP -->
-<section class="section section-muted trust-strip" aria-label="Where we operate">
-  <div class="container trust-strip-inner">
-    <p class="trust-strip-text">
-      Supporting teams across logistics, construction, operations, and technical roles
-    </p>
-  </div>
-</section>
+
+    <!-- PHASE 2: TRUST CONTEXT STRIP -->
+    <section class="section section-muted trust-strip" aria-label="Where we operate">
+      <div class="container trust-strip-inner">
+        <p class="trust-strip-text">
+          Supporting teams across logistics, construction, operations, and technical roles
+        </p>
+      </div>
+    </section>
 
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container">
         <div class="section-head">
           <h2>About NippuKoodi</h2>
-         <p>
-  NippuKoodi connects skilled workers with companies that need dependable, ready-to-work staffing.
-  <br><br>
-  We focus on verification, clear communication, and fast placement — removing uncertainty for both workers and businesses.
-</p>
+          <p>
+            NippuKoodi connects skilled workers with companies that need dependable, ready-to-work staffing.
+            <br><br>
+            We focus on verification, clear communication, and fast placement — removing uncertainty for both workers and businesses.
+          </p>
         </div>
 
         <div class="grid-3">
@@ -146,22 +146,22 @@
           <div class="card">
             <div class="card-icon"><i class="fa-solid fa-user-check"></i></div>
             <h3>Vetted Workers</h3>
-            <p>Thorough checks and verification before placement.</p>
+            <p>Identity, background, and role suitability are verified before any placement.</p>
           </div>
           <div class="card">
             <div class="card-icon"><i class="fa-solid fa-building-circle-check"></i></div>
             <h3>Trusted Companies</h3>
-            <p>Reliable partners to ensure smooth operations.</p>
+            <p>We work with companies that value safety, clarity, and professional conduct.</p>
           </div>
           <div class="card">
             <div class="card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
             <h3>Quick Placement</h3>
-            <p>Fast turnaround without sacrificing quality.</p>
+            <p>Efficient matching and onboarding without cutting verification steps.</p>
           </div>
           <div class="card">
             <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
             <h3>Ongoing Support</h3>
-            <p>Guidance for both sides throughout engagement.</p>
+            <p>Clear points of contact and continued support during placements.</p>
           </div>
         </div>
       </div>
@@ -172,7 +172,7 @@
       <div class="container">
         <div class="section-head">
           <h2>How It Works</h2>
-          <p>Simple, clear, and consistent from start to finish.</p>
+          <p>A structured process designed to reduce risk and confusion at every step.</p>
         </div>
 
         <ol class="steps">
@@ -201,7 +201,7 @@
             <div class="step-badge">4</div>
             <div class="step-body">
               <h3>Support</h3>
-              <p>We stay involved to keep everything running smoothly.</p>
+              <p>We remain available to resolve issues and ensure expectations are met on both sides.</p>
             </div>
           </li>
         </ol>
@@ -217,19 +217,19 @@
         </div>
 
         <div class="testimonials">
-        <figure class="quote">
-  <blockquote>
-    “I was placed quickly and the expectations were clear from the start. The process felt professional and organized.”
-  </blockquote>
-  <figcaption>— Field Technician</figcaption>
-</figure>
+          <figure class="quote">
+            <blockquote>
+              “I was placed quickly and the expectations were clear from the start. The process felt professional and organized.”
+            </blockquote>
+            <figcaption>— Field Technician</figcaption>
+          </figure>
 
-<figure class="quote">
-  <blockquote>
-    “The workers we received were verified and ready to work. Communication was clear and onboarding was straightforward.”
-  </blockquote>
-  <figcaption>— Operations Manager</figcaption>
-</figure>
+          <figure class="quote">
+            <blockquote>
+              “The workers we received were verified and ready to work. Communication was clear and onboarding was straightforward.”
+            </blockquote>
+            <figcaption>— Operations Manager</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -261,13 +261,11 @@
 
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Send Message</button>
-            <p class="form-note">
-  We typically respond within 24–48 hours. No spam. No obligations.
-</p>
             <a class="btn btn-ghost" href="support.html">Use Contact Page</a>
           </div>
 
-          <p class="form-note">By sending, contact back may happen via email.</p>
+          <!-- PHASE 2: reassurance (keep OUTSIDE .form-actions) -->
+          <p class="form-note">We typically respond within 24–48 hours. No spam. No obligations.</p>
         </form>
       </div>
     </section>
@@ -276,7 +274,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved. Professional staffing & workforce coordination.</p>
 
       <div class="footer-links" aria-label="Footer navigation">
         <a href="index.html">Home</a>
@@ -291,7 +289,6 @@
   </footer>
 
   <script>
-    // footer year (no extra file needed)
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
   <script src="script.js"></script>
