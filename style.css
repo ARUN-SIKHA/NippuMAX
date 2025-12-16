@@ -684,3 +684,12 @@ body[data-animate] .reveal.is-visible{
     transform: none !important;
   }
 }
+
+/* ===== PHASE 3A: Active nav link ===== */
+.nav a.is-active{
+  background: rgba(11,91,211,.10);
+  color: #0b5bd3;
+}
+.nav a.is-active:hover{
+  background: rgba(11,91,211,.14);
+}
