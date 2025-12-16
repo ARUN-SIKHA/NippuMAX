@@ -10,22 +10,60 @@
   --shadow:0 12px 35px rgba(16,24,40,.10);
   --radius:16px;
   --header-h:72px;
+
+  /* iPhone 18 Typography System */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  /* Readability */
+  --reading: 72ch;           /* max line length for body copy */
+  --leading: 1.62;           /* comfortable line-height */
+  --leading-tight: 1.08;     /* display line-height */
+  --tracking-tight: -0.02em; /* subtle premium tightening for headings */
 }
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth; scroll-padding-top:var(--header-h)}
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-family: var(--font-sans);
   color:var(--text);
   background:#fff;
-  line-height:1.55;
+  line-height: var(--leading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 img{max-width:100%; display:block}
 a{color:inherit; text-decoration:none}
 a:hover{opacity:.92}
+
+/* Container + readable text width helper */
 .container{width:min(1120px, calc(100% - 40px)); margin:0 auto}
+.reading{max-width: var(--reading); margin-inline:auto}
+
+/* Default text rhythm */
+p{
+  margin: 0 0 14px 0;
+  color: var(--text);
+}
+small{color:var(--muted)}
+strong{font-weight:800}
+
+/* Headings: authoritative but calm */
+h1,h2,h3,h4{
+  margin:0;
+  letter-spacing: var(--tracking-tight);
+}
+h3,h4{letter-spacing:-0.01em}
+
+/* Focus styles (subtle but clear, Apple-level) */
+:focus-visible{
+  outline: 3px solid rgba(11,91,211,.35);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
 
 .skip-link{
   position:absolute; left:-999px; top:10px;
@@ -65,7 +103,7 @@ a:hover{opacity:.92}
   box-shadow: 0 10px 25px rgba(16,24,40,.08);
 }
 .brand-text{
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-serif);
   font-weight:800;
   letter-spacing:.2px;
   font-size:22px;
@@ -79,7 +117,7 @@ a:hover{opacity:.92}
   gap:10px;
 }
 .nav a{
-  font-weight:700;
+  font-weight:800;               /* more authority */
   font-size:14px;
   color:#192033;
   padding:10px 10px;
@@ -124,7 +162,6 @@ a:hover{opacity:.92}
     justify-content:center;
   }
 
-  /* Make sure the dropdown is positioned relative to the viewport, not the button */
   .nav{
     position: fixed;
     left: 16px;
@@ -142,7 +179,6 @@ a:hover{opacity:.92}
     align-items:stretch;
     gap:6px;
 
-    /* Hidden state (animatable) */
     opacity:0;
     transform: translateY(-8px);
     pointer-events:none;
@@ -166,21 +202,17 @@ a:hover{opacity:.92}
 .nav-toggle-bars{
   transition: background 180ms ease;
 }
-
 .nav-toggle.is-open .nav-toggle-bars{
   background: transparent;
 }
-
 .nav-toggle-bars::before,
 .nav-toggle-bars::after{
   transition: transform 180ms ease, top 180ms ease;
 }
-
 .nav-toggle.is-open .nav-toggle-bars::before{
   top: 0;
   transform: rotate(45deg);
 }
-
 .nav-toggle.is-open .nav-toggle-bars::after{
   top: 0;
   transform: rotate(-45deg);
@@ -220,18 +252,18 @@ a:hover{opacity:.92}
   justify-content:center;
   gap:14px;
   color:#fff;
-  padding-top: 0px; /* increase to move higher, decrease to move less */
 }
 .hero h1{
   font-size: clamp(34px, 5vw, 58px);
-  line-height:1.05;
+  line-height: var(--leading-tight);
   margin:0;
   text-shadow: 0 10px 35px rgba(0,0,0,.35);
+  letter-spacing: -0.025em; /* slightly tighter for premium authority */
 }
 .hero p{
   margin:0;
   font-size: clamp(16px, 2vw, 20px);
-  opacity:.95;
+  opacity:.96;
   max-width: 58ch;
 }
 .hero-actions{
@@ -264,7 +296,7 @@ a:hover{opacity:.92}
   justify-content:center;
   border-radius: 14px;
   padding: 12px 16px;
-  font-weight: 800;
+  font-weight: 850;
   border:1px solid transparent;
   cursor:pointer;
   transition: transform .12s ease, background .2s ease, border-color .2s ease;
@@ -284,15 +316,23 @@ a:hover{opacity:.92}
 .section-muted{background: var(--soft)}
 .section-head{
   text-align:center;
-  max-width: 72ch;
+  max-width: var(--reading);
   margin:0 auto 28px auto;
 }
 .section-head h2{
   margin:0 0 10px 0;
   font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
 }
-.section-head p{margin:0; color:var(--muted)}
+.section-head p{
+  margin:0;
+  color:var(--muted);
+  font-size: 16px;
+  line-height: 1.62;
+}
 
+/* Grids */
 .grid-3{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -322,8 +362,18 @@ a:hover{opacity:.92}
   color: var(--primary);
   margin-bottom:10px;
 }
-.card h3{margin:0 0 6px 0}
-.card p{margin:0; color:var(--muted)}
+.card h3{
+  margin:0 0 6px 0;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing:-0.015em;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
 
 hr.sep{
   border:0;
@@ -363,7 +413,11 @@ hr.sep{
   justify-content:center;
   font-weight: 900;
 }
-.step-body h3{margin:0 0 6px 0}
+.step-body h3{
+  margin:0 0 6px 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
 .step-body p{margin:0; color:var(--muted)}
 
 /* TESTIMONIALS */
@@ -385,7 +439,8 @@ hr.sep{
 .quote blockquote{
   margin:0;
   color:#202842;
-  font-weight:650;
+  font-weight:700;
+  line-height: 1.5;
 }
 .quote figcaption{
   margin-top:12px;
@@ -403,7 +458,7 @@ hr.sep{
   padding:18px;
   box-shadow: 0 10px 25px rgba(16,24,40,.06);
 }
-.form label{display:block; font-weight:800; font-size:14px; color:#1c2540}
+.form label{display:block; font-weight:850; font-size:14px; color:#1c2540}
 .form input,.form textarea{
   margin-top:8px;
   width:100%;
@@ -446,11 +501,12 @@ hr.sep{
 .page-hero h1{
   margin:0;
   font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.12;
 }
 .page-hero p{
   margin:10px 0 0 0;
   color:var(--muted);
-  max-width: 72ch;
+  max-width: var(--reading);
 }
 
 /* FOOTER */
@@ -484,10 +540,4 @@ hr.sep{
   html{scroll-behavior:auto}
   .hero-slide{transition:none}
   .btn{transition:none}
-}
-
-/* Move only the hero title up */
-.hero .hero-content h1{
-  position: relative;
-  top: -12px; /* more negative = higher */
 }
