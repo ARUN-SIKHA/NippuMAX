@@ -5,25 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NippuKoodi — Contact</title>
 
-  <!-- KEEP favicon -->
+  <meta name="description" content="Contact NippuKoodi to discuss partnerships, staffing needs, or joining the vetted workforce." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="canonical" href="https://arun-sikha.github.io/NippuTest/support.html" />
+
+  <meta property="og:title" content="NippuKoodi — Contact" />
+  <meta property="og:description" content="Reach out to discuss staffing, partnerships, or joining the workforce." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://arun-sikha.github.io/NippuTest/support.html" />
+  <meta property="og:image" content="https://arun-sikha.github.io/NippuTest/logo.png" />
+
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
-  <link rel="stylesheet" href="style.css?v=1002">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=1005">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body>
+<body data-animate>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="NippuKoodi Home">
-        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" width="34" height="34" decoding="async" />
         <span class="brand-text">NippuKoodi</span>
       </a>
 
       <div class="nav-wrap">
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-          <span class="nav-toggle-bars"></span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
         </button>
 
         <nav class="nav" id="siteNav" aria-label="Main navigation">
@@ -50,15 +61,20 @@
 
     <section class="section section-muted">
       <div class="container">
-        <form class="form" action="https://formspree.io/f/mnnekpke" method="POST">
+
+        <noscript>
+          <p class="form-note">JavaScript is disabled. The contact form will still submit normally.</p>
+        </noscript>
+
+        <form class="form" data-formspree="mnnekpke" action="https://formspree.io/f/mnnekpke" method="POST">
           <div class="form-row">
             <div>
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
+              <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
             </div>
           </div>
 
@@ -67,12 +83,16 @@
             <textarea id="message" name="message" rows="7" placeholder="How can help be provided?" required></textarea>
           </div>
 
+          <input type="hidden" name="page" value="support" />
+          <input type="hidden" name="_subject" value="New message from NippuKoodi (support)" />
+
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Send Message →</button>
             <a class="btn btn-ghost" href="index.html">← Back to Home</a>
           </div>
 
           <p class="form-note">By sending, contact back may happen via email.</p>
+          <p class="form-status" aria-live="polite"></p>
         </form>
       </div>
     </section>
