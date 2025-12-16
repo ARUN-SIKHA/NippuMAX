@@ -566,3 +566,36 @@ hr.sep{
     margin: 0 auto;
   }
 }
+
+/* ===== PHASE 2: Trust strip + testimonial mark ===== */
+
+/* Trust strip */
+.trust-strip{
+  padding: var(--s-6) 0;
+}
+.trust-strip-inner{
+  display:flex;
+  justify-content:center;
+}
+.trust-strip-text{
+  margin:0;
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-align:center;
+}
+
+/* Testimonial quote mark */
+.quote{ position:relative; }
+.quote::before{
+  content:"“";
+  position:absolute;
+  top:-14px;
+  left:18px;
+  font-size:72px;
+  line-height:1;
+  color: rgba(11,91,211,.10);
+  font-family: var(--font-serif);
+  pointer-events:none;
+}
