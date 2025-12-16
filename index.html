@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NippuKoodi</title>
 
-  <!-- KEEP favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
 
-  <link rel="stylesheet" href="style.css?v=1003">
+  <link rel="stylesheet" href="style.css?v=1004">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body data-animate>
@@ -34,6 +33,8 @@
           <a href="#how">How It Works</a>
           <a href="#testimonials">Testimonials</a>
           <a href="#contact">Contact</a>
+          <a href="companies.html">For Companies</a>
+          <a href="workers.html">For Workers</a>
           <a class="nav-cta" href="support.html">Contact Page</a>
         </nav>
       </div>
@@ -65,8 +66,9 @@
             <p>Verified workers. Clear process. Reliable staffing for teams that need results — not delays.</p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#contact">Get Started</a>
-              <a class="btn btn-ghost" href="history.html">Read Our Story</a>
+              <a class="btn btn-primary" href="companies.html">Hire Workers</a>
+              <a class="btn btn-ghost" href="workers.html">Join as a Worker</a>
+              <a class="btn btn-ghost" href="process.html">See the Process</a>
             </div>
 
             <div class="hero-metrics" aria-label="Highlights">
@@ -83,6 +85,7 @@
                 <span>Trusted companies</span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -154,6 +157,52 @@
             <a class="btn btn-primary" href="#contact">Talk to us</a>
             <a class="btn btn-ghost" href="history.html">Our story</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 3: PATHWAYS -->
+    <section class="section section-muted" id="paths" aria-label="Choose your path">
+      <div class="container">
+        <div class="section-head">
+          <h2>Choose Your Path</h2>
+          <p>Two clear flows — one for companies hiring, one for workers joining.</p>
+        </div>
+
+        <div class="path-grid">
+          <article class="path-card">
+            <div class="path-top">
+              <div class="path-icon"><i class="fa-solid fa-building"></i></div>
+              <h3>For Companies</h3>
+            </div>
+            <p>Request vetted workers, reduce hiring friction, and keep operations stable.</p>
+            <ul class="path-list">
+              <li><i class="fa-solid fa-check"></i> Clear onboarding expectations</li>
+              <li><i class="fa-solid fa-check"></i> Verified worker pipeline</li>
+              <li><i class="fa-solid fa-check"></i> Support during placement</li>
+            </ul>
+            <div class="path-actions">
+              <a class="btn btn-primary" href="companies.html">Company Flow</a>
+              <a class="btn btn-ghost" href="process.html">See Process</a>
+            </div>
+          </article>
+
+          <article class="path-card">
+            <div class="path-top">
+              <div class="path-icon"><i class="fa-solid fa-user-gear"></i></div>
+              <h3>For Workers</h3>
+            </div>
+            <p>Join the vetted workforce and get placed with trusted companies.</p>
+            <ul class="path-list">
+              <li><i class="fa-solid fa-check"></i> Clear expectations</li>
+              <li><i class="fa-solid fa-check"></i> Reliable placements</li>
+              <li><i class="fa-solid fa-check"></i> Ongoing support</li>
+            </ul>
+            <div class="path-actions">
+              <a class="btn btn-primary" href="workers.html">Worker Flow</a>
+              <a class="btn btn-ghost" href="support.html">Contact</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -267,6 +316,12 @@
             </div>
           </li>
         </ol>
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="process.html">Read Full Process</a>
+          <a class="btn btn-ghost" href="companies.html">Company Flow</a>
+          <a class="btn btn-ghost" href="workers.html">Worker Flow</a>
+        </div>
       </div>
     </section>
 
@@ -304,8 +359,29 @@
           <p>Tell us what you need — we’ll respond as soon as possible.</p>
         </div>
 
-        <form class="form" action="https://formspree.io/f/mnnekpke" method="POST">
+        <form class="form" id="contactForm" data-formspree="mnnekpke" action="https://formspree.io/f/mnnekpke" method="POST">
           <div class="form-row">
+            <div>
+              <label for="role">I am a</label>
+              <select id="role" name="role" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="Company">Company</option>
+                <option value="Worker">Worker</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="topic">Topic</label>
+              <select id="topic" name="topic" required>
+                <option value="" selected disabled>Select one</option>
+                <option value="Hiring workers">Hiring workers</option>
+                <option value="Joining as a worker">Joining as a worker</option>
+                <option value="Partnership / other">Partnership / other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:12px;">
             <div>
               <label for="name">Name</label>
               <input id="name" name="name" type="text" placeholder="Your name" required />
@@ -321,13 +397,32 @@
             <textarea id="message" name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
           </div>
 
+          <!-- optional metadata -->
+          <input type="hidden" name="page" value="index" />
+
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Send Message</button>
             <a class="btn btn-ghost" href="support.html">Use Contact Page</a>
           </div>
 
           <p class="form-note">We typically respond within 24–48 hours. No spam. No obligations.</p>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
         </form>
+      </div>
+    </section>
+
+    <!-- PHASE 3: CONVERSION CTA STRIP -->
+    <section class="cta-strip" aria-label="Primary call to action">
+      <div class="container cta-strip-inner">
+        <div class="cta-copy">
+          <h2>Ready for reliable staffing?</h2>
+          <p>Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="companies.html">For Companies</a>
+          <a class="btn btn-ghost" href="workers.html">For Workers</a>
+          <a class="btn btn-ghost" href="support.html">Contact</a>
+        </div>
       </div>
     </section>
 
@@ -345,6 +440,8 @@
         <a href="#how">How It Works</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#contact">Contact</a>
+        <a href="companies.html">For Companies</a>
+        <a href="workers.html">For Workers</a>
         <a href="support.html">Contact Page</a>
       </div>
     </div>
