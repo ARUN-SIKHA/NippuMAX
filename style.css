@@ -550,3 +550,20 @@ hr.sep{
   .hero-slide{transition:none}
   .btn{transition:none}
 }
+
+/* Step 5: Header & Nav tightening */
+.site-header{
+  box-shadow: 0 10px 30px rgba(16,24,40,.06);
+}
+
+.nav a{
+  line-height: 1;
+}
+
+@media (max-width: 920px){
+  .nav{
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
