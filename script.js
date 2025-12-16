@@ -84,7 +84,7 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
-    const targets = $$(".section, .site-footer");
+    const targets = $$(".section, .site-footer, .cta-strip");
     targets.forEach((el) => el.classList.add("reveal"));
 
     const io = new IntersectionObserver(
@@ -141,10 +141,86 @@
     else setActive("about");
   }
 
+  // Phase 3: Prefill contact select from URL params (?role=Company&topic=Hiring)
+  function initPrefillContact() {
+    const role = $("#role");
+    const topic = $("#topic");
+    if (!role && !topic) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const roleParam = params.get("role");
+    const topicParam = params.get("topic");
+
+    if (role && roleParam) {
+      const match = Array.from(role.options).find((o) => o.value.toLowerCase() === roleParam.toLowerCase());
+      if (match) role.value = match.value;
+    }
+
+    if (topic && topicParam) {
+      const match = Array.from(topic.options).find((o) => o.value.toLowerCase() === topicParam.toLowerCase());
+      if (match) topic.value = match.value;
+    }
+  }
+
+  // Phase 3: Smarter contact UX (AJAX submit + status message)
+  function initSmartForms() {
+    const forms = $$("form[data-formspree]");
+    if (!forms.length) return;
+
+    forms.forEach((form) => {
+      const statusEl =
+        form.querySelector(".form-status") ||
+        (() => {
+          const p = document.createElement("p");
+          p.className = "form-status";
+          p.setAttribute("aria-live", "polite");
+          form.appendChild(p);
+          return p;
+        })();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener("submit", async (e) => {
+        // If fetch isn't available, let normal form submit happen
+        if (!window.fetch) return;
+
+        e.preventDefault();
+        statusEl.classList.remove("is-success", "is-error");
+        statusEl.textContent = "Sending…";
+
+        if (submitBtn) submitBtn.disabled = true;
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (res.ok) {
+            form.reset();
+            statusEl.classList.add("is-success");
+            statusEl.textContent = "Message sent successfully. We’ll get back to you soon.";
+          } else {
+            statusEl.classList.add("is-error");
+            statusEl.textContent = "Something went wrong. Please try again, or use the Contact Page.";
+          }
+        } catch (err) {
+          statusEl.classList.add("is-error");
+          statusEl.textContent = "Network error. Please try again, or use the Contact Page.";
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
     initHeroSlider();
     initReveal();
     initActiveNav();
+    initPrefillContact();
+    initSmartForms();
   });
 })();
