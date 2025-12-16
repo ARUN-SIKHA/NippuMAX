@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — For Companies</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="stylesheet" href="style.css?v=1004">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body data-animate>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="process.html">Process</a>
+          <a href="workers.html">For Workers</a>
+          <a href="companies.html" aria-current="page">For Companies</a>
+          <a class="nav-cta" href="support.html">Contact Page</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>For Companies</h1>
+        <p>
+          Get vetted workers with clear expectations and reliable communication — so operations don’t stall.
+        </p>
+
+        <div class="page-actions">
+          <a class="btn btn-primary" href="index.html?role=Company&topic=Hiring%20workers#contact">Request Workers</a>
+          <a class="btn btn-ghost" href="process.html">See the Process</a>
+          <a class="btn btn-ghost" href="support.html">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>What you get</h2>
+          <p>Trust-first staffing with speed — without skipping verification.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h3>Verified pipeline</h3>
+            <p>Workers are screened so reliability isn’t a gamble.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+            <h3>Clear expectations</h3>
+            <p>Roles, timelines, and onboarding are aligned upfront.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+            <h3>Support</h3>
+            <p>We stay reachable during placement to keep things smooth.</p>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="index.html?role=Company&topic=Hiring%20workers#contact">Request Workers</a>
+          <a class="btn btn-ghost" href="support.html">Contact Page</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="companies.html" aria-current="page">For Companies</a>
+        <a href="workers.html">For Workers</a>
+        <a href="process.html">Process</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
