@@ -3,36 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>NippuKoodi — Trusted Staffing</title>
-  <meta name="description" content="Verified workers, clear expectations, and reliable placements. NippuKoodi connects skilled workers with trusted companies." />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://arun-sikha.github.io/NippuMAX/index.html" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="NippuKoodi — Trusted Staffing" />
-  <meta property="og:description" content="Verified workers. Clear process. Reliable staffing without uncertainty." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://arun-sikha.github.io/NippuMAX/index.html" />
-  <meta property="og:image" content="https://arun-sikha.github.io/NippuMAX/logo.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="NippuKoodi — Trusted Staffing" />
-  <meta name="twitter:description" content="Clear process. Verified workers. Reliable staffing." />
-  <meta name="twitter:image" content="https://arun-sikha.github.io/NippuMAX/logo.png" />
-
-  <!-- Theme -->
-  <meta name="theme-color" content="#0b5bd3" />
-  <meta name="color-scheme" content="light" />
+  <title>NippuKoodi</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-
-  <link rel="stylesheet" href="style.css?v=1004" />
+  <link rel="stylesheet" href="style.css?v=1005">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body data-animate>
@@ -42,26 +17,42 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="NippuKoodi Home">
-        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" width="34" height="34" decoding="async" />
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
         <span class="brand-text">NippuKoodi</span>
       </a>
 
       <div class="nav-wrap">
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-          <span class="nav-toggle-bars" aria-hidden="true"></span>
+          <span class="nav-toggle-bars"></span>
         </button>
 
         <nav class="nav" id="siteNav" aria-label="Main navigation">
-          <a href="#about">About</a>
-          <a href="#why">Why</a>
-          <a href="#services">Services</a>
-          <a href="#how">How It Works</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#contact">Contact</a>
-          <a href="companies.html">For Companies</a>
-          <a href="workers.html">For Workers</a>
-          <a class="nav-cta" href="support.html">Contact Page</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#why" data-i18n="nav_why">Why</a>
+          <a href="#services" data-i18n="nav_services">Services</a>
+          <a href="#how" data-i18n="nav_how">How It Works</a>
+          <a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
+
+          <a href="companies.html" data-i18n="nav_companies">For Companies</a>
+          <a href="workers.html" data-i18n="nav_workers">For Workers</a>
+          <a href="process.html" data-i18n="nav_process">Process</a>
+          <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
+          <a href="blog.html" data-i18n="nav_blog">Insights</a>
+          <a href="case-studies.html" data-i18n="nav_cases">Case Studies</a>
+
+          <a class="nav-cta" href="support.html" data-i18n="nav_contact_page">Contact Page</a>
         </nav>
+      </div>
+
+      <div class="header-utils" aria-label="Header controls">
+        <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="lang-pill" id="langToggle" type="button" aria-label="Switch language">
+          <i class="fa-solid fa-language"></i>
+          <span>EN</span>
+        </button>
       </div>
     </div>
   </header>
@@ -72,30 +63,26 @@
     <section class="hero" aria-label="Hero">
       <div class="hero-media">
         <div class="hero-slide is-active">
-          <img
-            id="slide1img"
-            src="slide1.jpg"
-            data-fallback="slide2.jpg"
-            alt="NippuKoodi staffing team at work"
-            loading="eager"
-            decoding="async"
-          />
+          <img id="slide1img" src="slide1.jpg" data-fallback="slide2.jpg" alt="NippuKoodi staffing team at work" />
         </div>
 
         <div class="hero-slide">
-          <img src="slide2.jpg" alt="Workforce and industry operations" loading="lazy" decoding="async" />
+          <img src="slide2.jpg" alt="Workforce and industry operations" />
         </div>
 
         <div class="hero-slide">
-          <img src="slide3.jpg" alt="Trusted staffing partnership" loading="lazy" decoding="async" />
+          <img src="slide3.jpg" alt="Trusted staffing partnership" />
         </div>
 
         <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
 
         <div class="hero-content">
           <div class="container">
-            <h1>Connecting Skilled Workers</h1>
-            <p>Verified workers. Clear process. Reliable staffing for teams that need results — not delays.</p>
+            <h1 data-i18n="hero_title">Connecting Skilled Workers</h1>
+            <p data-i18n="hero_sub">
+              Verified workers. Clear process. Reliable staffing for teams that need results — not delays.
+            </p>
 
             <div class="hero-actions">
               <a class="btn btn-primary" href="companies.html">Hire Workers</a>
@@ -123,16 +110,16 @@
       </div>
     </section>
 
-    <!-- PHASE 2: TRUST CONTEXT STRIP -->
+    <!-- TRUST CONTEXT STRIP -->
     <section class="section section-muted trust-strip" aria-label="Where we operate">
       <div class="container trust-strip-inner">
-        <p class="trust-strip-text">
+        <p class="trust-strip-text" data-i18n="trust_strip">
           Supporting teams across logistics, construction, operations, and technical roles
         </p>
       </div>
     </section>
 
-    <!-- PHASE 2: WHY NIPPUKOODI EXISTS -->
+    <!-- WHY -->
     <section class="section why" id="why" aria-label="Why NippuKoodi exists">
       <div class="container">
         <div class="section-head">
@@ -193,7 +180,7 @@
       </div>
     </section>
 
-    <!-- PHASE 3: PATHWAYS -->
+    <!-- PATHWAYS -->
     <section class="section section-muted" id="paths" aria-label="Choose your path">
       <div class="container">
         <div class="section-head">
@@ -391,17 +378,11 @@
           <p>Tell us what you need — we’ll respond as soon as possible.</p>
         </div>
 
-        <noscript>
-          <div class="container" style="margin-bottom: 16px;">
-            <p class="form-note">JavaScript is disabled. The contact form will still submit normally.</p>
-          </div>
-        </noscript>
-
         <form class="form" id="contactForm" data-formspree="mnnekpke" action="https://formspree.io/f/mnnekpke" method="POST">
           <div class="form-row">
             <div>
               <label for="role">I am a</label>
-              <select id="role" name="role" required autocomplete="off">
+              <select id="role" name="role" required>
                 <option value="" selected disabled>Select one</option>
                 <option value="Company">Company</option>
                 <option value="Worker">Worker</option>
@@ -410,7 +391,7 @@
             </div>
             <div>
               <label for="topic">Topic</label>
-              <select id="topic" name="topic" required autocomplete="off">
+              <select id="topic" name="topic" required>
                 <option value="" selected disabled>Select one</option>
                 <option value="Hiring workers">Hiring workers</option>
                 <option value="Joining as a worker">Joining as a worker</option>
@@ -422,11 +403,11 @@
           <div class="form-row" style="margin-top:12px;">
             <div>
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+              <input id="name" name="name" type="text" placeholder="Your name" required />
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
             </div>
           </div>
 
@@ -435,9 +416,7 @@
             <textarea id="message" name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
           </div>
 
-          <!-- optional metadata -->
           <input type="hidden" name="page" value="index" />
-          <input type="hidden" name="_subject" value="New message from NippuKoodi (index)" />
 
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">Send Message</button>
@@ -450,12 +429,14 @@
       </div>
     </section>
 
-    <!-- PHASE 3: CONVERSION CTA STRIP -->
+    <!-- CTA STRIP -->
     <section class="cta-strip" aria-label="Primary call to action">
       <div class="container cta-strip-inner">
         <div class="cta-copy">
-          <h2>Ready for reliable staffing?</h2>
-          <p>Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step.</p>
+          <h2 data-i18n="cta_ready">Ready for reliable staffing?</h2>
+          <p data-i18n="cta_sub">
+            Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step.
+          </p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="companies.html">For Companies</a>
@@ -473,14 +454,12 @@
 
       <div class="footer-links" aria-label="Footer navigation">
         <a href="index.html">Home</a>
-        <a href="#about">About</a>
-        <a href="#why">Why</a>
-        <a href="#services">Services</a>
-        <a href="#how">How It Works</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
         <a href="companies.html">For Companies</a>
         <a href="workers.html">For Workers</a>
+        <a href="process.html">Process</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="blog.html">Insights</a>
+        <a href="case-studies.html">Case Studies</a>
         <a href="support.html">Contact Page</a>
       </div>
     </div>
