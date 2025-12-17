@@ -6,12 +6,11 @@
   <title>NippuKoodi</title>
 
   <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
-
   <link rel="stylesheet" href="style.css?v=1005">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body data-animate>
 
+<body data-animate data-theme="light">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -38,20 +37,20 @@
           <a href="workers.html" data-i18n="nav_workers">For Workers</a>
           <a href="process.html" data-i18n="nav_process">Process</a>
           <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
-          <a href="blog.html" data-i18n="nav_blog">Insights</a>
-          <a href="case-studies.html" data-i18n="nav_cases">Case Studies</a>
+          <a href="insights.html" data-i18n="nav_insights">Insights</a>
+          <a href="case-studies.html" data-i18n="nav_case">Case Studies</a>
 
-          <a class="nav-cta" href="support.html" data-i18n="nav_contact_page">Contact Page</a>
+          <a class="nav-cta" href="support.html" data-i18n="nav_contactpage">Contact Page</a>
         </nav>
       </div>
 
-      <div class="header-utils" aria-label="Header controls">
-        <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch theme">
+      <div class="header-tools">
+        <select class="lang-select" id="langSelect" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="fi">FI</option>
+        </select>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
           <i class="fa-solid fa-moon"></i>
-        </button>
-        <button class="lang-pill" id="langToggle" type="button" aria-label="Switch language">
-          <i class="fa-solid fa-language"></i>
-          <span>EN</span>
         </button>
       </div>
     </div>
@@ -75,19 +74,16 @@
         </div>
 
         <div class="hero-overlay" aria-hidden="true"></div>
-        <div class="hero-glow" aria-hidden="true"></div>
 
         <div class="hero-content">
           <div class="container">
             <h1 data-i18n="hero_title">Connecting Skilled Workers</h1>
-            <p data-i18n="hero_sub">
-              Verified workers. Clear process. Reliable staffing for teams that need results — not delays.
-            </p>
+            <p data-i18n="hero_sub">Verified workers. Clear process. Reliable staffing for teams that need results — not delays.</p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="companies.html">Hire Workers</a>
-              <a class="btn btn-ghost" href="workers.html">Join as a Worker</a>
-              <a class="btn btn-ghost" href="process.html">See the Process</a>
+              <a class="btn btn-primary" href="companies.html" data-i18n="hero_cta_company">Hire Workers</a>
+              <a class="btn btn-ghost" href="workers.html" data-i18n="hero_cta_worker">Join as a Worker</a>
+              <a class="btn btn-ghost" href="process.html" data-i18n="hero_cta_process">See the Process</a>
             </div>
 
             <div class="hero-metrics" aria-label="Highlights">
@@ -176,52 +172,6 @@
             <a class="btn btn-primary" href="#contact">Talk to us</a>
             <a class="btn btn-ghost" href="history.html">Our story</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PATHWAYS -->
-    <section class="section section-muted" id="paths" aria-label="Choose your path">
-      <div class="container">
-        <div class="section-head">
-          <h2>Choose Your Path</h2>
-          <p>Two clear flows — one for companies hiring, one for workers joining.</p>
-        </div>
-
-        <div class="path-grid">
-          <article class="path-card">
-            <div class="path-top">
-              <div class="path-icon"><i class="fa-solid fa-building"></i></div>
-              <h3>For Companies</h3>
-            </div>
-            <p>Request vetted workers, reduce hiring friction, and keep operations stable.</p>
-            <ul class="path-list">
-              <li><i class="fa-solid fa-check"></i> Clear onboarding expectations</li>
-              <li><i class="fa-solid fa-check"></i> Verified worker pipeline</li>
-              <li><i class="fa-solid fa-check"></i> Support during placement</li>
-            </ul>
-            <div class="path-actions">
-              <a class="btn btn-primary" href="companies.html">Company Flow</a>
-              <a class="btn btn-ghost" href="process.html">See Process</a>
-            </div>
-          </article>
-
-          <article class="path-card">
-            <div class="path-top">
-              <div class="path-icon"><i class="fa-solid fa-user-gear"></i></div>
-              <h3>For Workers</h3>
-            </div>
-            <p>Join the vetted workforce and get placed with trusted companies.</p>
-            <ul class="path-list">
-              <li><i class="fa-solid fa-check"></i> Clear expectations</li>
-              <li><i class="fa-solid fa-check"></i> Reliable placements</li>
-              <li><i class="fa-solid fa-check"></i> Ongoing support</li>
-            </ul>
-            <div class="path-actions">
-              <a class="btn btn-primary" href="workers.html">Worker Flow</a>
-              <a class="btn btn-ghost" href="support.html">Contact</a>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -433,10 +383,8 @@
     <section class="cta-strip" aria-label="Primary call to action">
       <div class="container cta-strip-inner">
         <div class="cta-copy">
-          <h2 data-i18n="cta_ready">Ready for reliable staffing?</h2>
-          <p data-i18n="cta_sub">
-            Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step.
-          </p>
+          <h2 data-i18n="cta_title">Ready for reliable staffing?</h2>
+          <p data-i18n="cta_sub">Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step.</p>
         </div>
         <div class="cta-actions">
           <a class="btn btn-primary" href="companies.html">For Companies</a>
@@ -450,15 +398,21 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> NippuKoodi. All rights reserved. Professional staffing & workforce coordination.</p>
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
 
       <div class="footer-links" aria-label="Footer navigation">
         <a href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#why">Why</a>
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
         <a href="companies.html">For Companies</a>
         <a href="workers.html">For Workers</a>
         <a href="process.html">Process</a>
         <a href="dashboard.html">Dashboard</a>
-        <a href="blog.html">Insights</a>
+        <a href="insights.html">Insights</a>
         <a href="case-studies.html">Case Studies</a>
         <a href="support.html">Contact Page</a>
       </div>
