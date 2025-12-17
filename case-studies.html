@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — Case Studies</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="stylesheet" href="style.css?v=1005" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body data-animate>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#about" data-i18n="nav_about">About</a>
+          <a href="companies.html" data-i18n="nav_companies">For Companies</a>
+          <a href="workers.html" data-i18n="nav_workers">For Workers</a>
+          <a href="process.html" data-i18n="nav_process">Process</a>
+          <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
+          <a href="blog.html" data-i18n="nav_blog">Insights</a>
+          <a href="case-studies.html" aria-current="page" data-i18n="nav_cases">Case Studies</a>
+          <a class="nav-cta" href="support.html" data-i18n="nav_contact_page">Contact Page</a>
+        </nav>
+      </div>
+
+      <div class="header-utils" aria-label="Header controls">
+        <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="lang-pill" id="langToggle" type="button" aria-label="Switch language">
+          <i class="fa-solid fa-language"></i>
+          <span>EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Case Studies</h1>
+        <p>Examples of how trust-first staffing reduces risk and improves operational stability.</p>
+
+        <div class="page-actions">
+          <a class="btn btn-primary" href="support.html">Discuss a similar need</a>
+          <a class="btn btn-ghost" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured cases</h2>
+          <p>Structured summaries: problem → approach → outcome.</p>
+        </div>
+
+        <div class="post-grid">
+          <article class="post-card">
+            <div class="post-meta">
+              <span class="badge"><i class="fa-solid fa-industry"></i> Operations</span>
+              <span>Case</span>
+            </div>
+            <h3>Stabilizing a shifting workforce</h3>
+            <p>Clear onboarding + verified pipeline reduced last-minute no-shows and confusion.</p>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <span class="badge"><i class="fa-solid fa-truck-fast"></i> Logistics</span>
+              <span>Case</span>
+            </div>
+            <h3>Faster placements without quality loss</h3>
+            <p>Disciplined intake improved matching speed while keeping reliability high.</p>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <span class="badge"><i class="fa-solid fa-screwdriver-wrench"></i> Technical</span>
+              <span>Case</span>
+            </div>
+            <h3>Reducing onboarding friction</h3>
+            <p>Up-front expectations avoided “day-one surprises” and improved role fit.</p>
+          </article>
+        </div>
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="companies.html">Company Flow</a>
+          <a class="btn btn-ghost" href="workers.html">Worker Flow</a>
+          <a class="btn btn-ghost" href="dashboard.html">Dashboard Preview</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="case-studies.html" aria-current="page">Case Studies</a>
+        <a href="blog.html">Insights</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
