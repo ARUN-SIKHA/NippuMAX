@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — Dashboard Preview</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="stylesheet" href="style.css?v=1005" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body data-animate>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#about" data-i18n="nav_about">About</a>
+          <a href="companies.html" data-i18n="nav_companies">For Companies</a>
+          <a href="workers.html" data-i18n="nav_workers">For Workers</a>
+          <a href="process.html" data-i18n="nav_process">Process</a>
+          <a href="dashboard.html" aria-current="page" data-i18n="nav_dashboard">Dashboard</a>
+          <a href="blog.html" data-i18n="nav_blog">Insights</a>
+          <a href="case-studies.html" data-i18n="nav_cases">Case Studies</a>
+          <a class="nav-cta" href="support.html" data-i18n="nav_contact_page">Contact Page</a>
+        </nav>
+      </div>
+
+      <div class="header-utils" aria-label="Header controls">
+        <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="lang-pill" id="langToggle" type="button" aria-label="Switch language">
+          <i class="fa-solid fa-language"></i>
+          <span>EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Dashboard Preview</h1>
+        <p>What “operational clarity” could look like — without adding complexity for the user.</p>
+
+        <div class="page-actions">
+          <a class="btn btn-primary" href="support.html">Ask for a demo</a>
+          <a class="btn btn-ghost" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>What it would track</h2>
+          <p>High-signal data: placements, reliability, and response time — not vanity metrics.</p>
+        </div>
+
+        <div class="preview">
+          <div class="preview-top">
+            <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="badge"><i class="fa-solid fa-shield"></i> Preview</div>
+          </div>
+
+          <div class="preview-body">
+            <div class="preview-panel">
+              <h3 style="margin:0 0 10px 0;">Placement pipeline</h3>
+              <p style="margin:0; color:var(--muted);">A simple status view to keep expectations aligned.</p>
+
+              <hr class="sep" />
+
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <strong>Requests</strong>
+                  <span>24</span>
+                </div>
+                <div class="kpi">
+                  <strong>Verified</strong>
+                  <span>18</span>
+                </div>
+                <div class="kpi">
+                  <strong>Placed</strong>
+                  <span>12</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="preview-panel">
+              <h3 style="margin:0 0 10px 0;">Response clarity</h3>
+              <p style="margin:0; color:var(--muted);">Keep communication consistent and fast.</p>
+
+              <hr class="sep" />
+
+              <div class="kpi-grid">
+                <div class="kpi">
+                  <strong>Avg reply</strong>
+                  <span>14h</span>
+                </div>
+                <div class="kpi">
+                  <strong>On-time</strong>
+                  <span>96%</span>
+                </div>
+                <div class="kpi">
+                  <strong>Issues</strong>
+                  <span>2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="support.html">Request a demo</a>
+          <a class="btn btn-ghost" href="case-studies.html">See real outcomes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html" aria-current="page">Dashboard</a>
+        <a href="blog.html">Insights</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
