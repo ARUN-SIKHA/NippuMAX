@@ -2,140 +2,9 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  // ===== Phase 5: Theme (Dark mode toggle) =====
-  function initTheme() {
-    const root = document.documentElement;
-    const btn = $("#themeToggle");
-    const saved = localStorage.getItem("nk_theme"); // "dark" | "light" | null
-
-    if (saved === "dark") root.setAttribute("data-theme", "dark");
-    if (saved === "light") root.setAttribute("data-theme", "light");
-
-    const applyLabel = () => {
-      if (!btn) return;
-      const isDark = root.getAttribute("data-theme") === "dark";
-      btn.setAttribute("aria-pressed", isDark ? "true" : "false");
-      btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-      btn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-    };
-
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const isDark = root.getAttribute("data-theme") === "dark";
-        root.setAttribute("data-theme", isDark ? "light" : "dark");
-        localStorage.setItem("nk_theme", isDark ? "light" : "dark");
-        applyLabel();
-      });
-    }
-
-    applyLabel();
-  }
-
-  // ===== Phase 5: Localization (EN/FI) =====
-  const I18N = {
-    en: {
-      nav_about: "About",
-      nav_why: "Why",
-      nav_services: "Services",
-      nav_how: "How It Works",
-      nav_testimonials: "Testimonials",
-      nav_contact: "Contact",
-      nav_companies: "For Companies",
-      nav_workers: "For Workers",
-      nav_process: "Process",
-      nav_blog: "Insights",
-      nav_cases: "Case Studies",
-      nav_dashboard: "Dashboard",
-      nav_contact_page: "Contact Page",
-      hero_title: "Connecting Skilled Workers",
-      hero_sub: "Verified workers. Clear process. Reliable staffing for teams that need results — not delays.",
-      trust_strip: "Supporting teams across logistics, construction, operations, and technical roles",
-      cta_ready: "Ready for reliable staffing?",
-      cta_sub: "Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step.",
-      form_status_sending: "Sending…",
-      form_status_ok: "Message sent successfully. We’ll get back to you soon.",
-      form_status_err: "Something went wrong. Please try again, or use the Contact Page.",
-      form_status_net: "Network error. Please try again, or use the Contact Page.",
-      lang_label: "EN",
-    },
-    fi: {
-      nav_about: "Tietoa",
-      nav_why: "Miksi",
-      nav_services: "Palvelut",
-      nav_how: "Miten toimii",
-      nav_testimonials: "Arviot",
-      nav_contact: "Yhteys",
-      nav_companies: "Yrityksille",
-      nav_workers: "Työntekijöille",
-      nav_process: "Prosessi",
-      nav_blog: "Insights",
-      nav_cases: "Case-tarinat",
-      nav_dashboard: "Dashboard",
-      nav_contact_page: "Yhteyssivu",
-      hero_title: "Yhdistämme osaajat ja työn",
-      hero_sub: "Varmistetut työntekijät. Selkeä prosessi. Luotettava henkilöstöratkaisu ilman viivästyksiä.",
-      trust_strip: "Tukemme kattaa logistiikan, rakentamisen, operatiiviset ja tekniset roolit",
-      cta_ready: "Valmiina luotettavaan henkilöstöön?",
-      cta_sub: "Valitse sinulle sopiva polku — yritys tai työntekijä — ja ohjaamme seuraaviin askeliin.",
-      form_status_sending: "Lähetetään…",
-      form_status_ok: "Viesti lähetetty. Palaamme asiaan pian.",
-      form_status_err: "Jokin meni pieleen. Yritä uudelleen tai käytä Yhteyssivua.",
-      form_status_net: "Verkkovirhe. Yritä uudelleen tai käytä Yhteyssivua.",
-      lang_label: "FI",
-    },
-  };
-
-  function applyLanguage(lang) {
-    const dict = I18N[lang] || I18N.en;
-    document.documentElement.setAttribute("lang", lang);
-
-    $$("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (!key || !(key in dict)) return;
-      el.textContent = dict[key];
-    });
-
-    // placeholders
-    $$("[data-i18n-placeholder]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-placeholder");
-      if (!key || !(key in dict)) return;
-      el.setAttribute("placeholder", dict[key]);
-    });
-
-    // store current for other functions
-    document.documentElement.setAttribute("data-lang", lang);
-  }
-
-  function initLanguage() {
-    const btn = $("#langToggle");
-    const saved = localStorage.getItem("nk_lang"); // "en" | "fi" | null
-
-    const initial =
-      saved ||
-      (navigator.language && navigator.language.toLowerCase().startsWith("fi") ? "fi" : "en");
-
-    applyLanguage(initial);
-
-    const updateBtn = () => {
-      if (!btn) return;
-      const lang = document.documentElement.getAttribute("data-lang") || "en";
-      btn.setAttribute("aria-label", lang === "en" ? "Switch language to Finnish" : "Vaihda kieli englanniksi");
-      btn.querySelector("span").textContent = (I18N[lang] || I18N.en).lang_label;
-    };
-
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const current = document.documentElement.getAttribute("data-lang") || "en";
-        const next = current === "en" ? "fi" : "en";
-        localStorage.setItem("nk_lang", next);
-        applyLanguage(next);
-        updateBtn();
-      });
-    }
-
-    updateBtn();
-  }
-
+  /* =========================
+     NAV (mobile)
+  ========================= */
   function initNav() {
     const toggle = $("#navToggle");
     const nav = $("#siteNav");
@@ -161,6 +30,9 @@
     });
   }
 
+  /* =========================
+     HERO SLIDER
+  ========================= */
   function preloadImages(urls) {
     return Promise.all(
       urls.map(
@@ -212,13 +84,16 @@
     });
   }
 
+  /* =========================
+     REVEAL
+  ========================= */
   function initReveal() {
     if (!document.body.hasAttribute("data-animate")) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
-    const targets = $$(".section, .site-footer, .cta-strip");
+    const targets = $$(".section, .site-footer, .cta-strip, .page-hero");
     targets.forEach((el) => el.classList.add("reveal"));
 
     const io = new IntersectionObserver(
@@ -236,11 +111,13 @@
     targets.forEach((el) => io.observe(el));
   }
 
+  /* =========================
+     ACTIVE NAV (index anchors)
+  ========================= */
   function initActiveNav() {
     const nav = document.getElementById("siteNav");
     if (!nav) return;
 
-    // Only activate section highlighting on pages that have hash sections
     const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
     if (!links.length) return;
 
@@ -276,7 +153,9 @@
     else setActive(sections[0].id);
   }
 
-  // Prefill contact selects (?role=Company&topic=Hiring)
+  /* =========================
+     PREFILL CONTACT (URL params)
+  ========================= */
   function initPrefillContact() {
     const role = $("#role");
     const topic = $("#topic");
@@ -297,7 +176,9 @@
     }
   }
 
-  // Smarter contact UX (AJAX submit + status message)
+  /* =========================
+     SMART FORMS (Formspree AJAX)
+  ========================= */
   function initSmartForms() {
     const forms = $$("form[data-formspree]");
     if (!forms.length) return;
@@ -316,15 +197,12 @@
       const submitBtn = form.querySelector('button[type="submit"]');
 
       form.addEventListener("submit", async (e) => {
-        if (!window.fetch) return;
+        if (!window.fetch) return; // fallback to normal submit
 
         e.preventDefault();
         statusEl.classList.remove("is-success", "is-error");
+        statusEl.textContent = "Sending…";
 
-        const lang = document.documentElement.getAttribute("data-lang") || "en";
-        const dict = I18N[lang] || I18N.en;
-
-        statusEl.textContent = dict.form_status_sending;
         if (submitBtn) submitBtn.disabled = true;
 
         try {
@@ -337,14 +215,14 @@
           if (res.ok) {
             form.reset();
             statusEl.classList.add("is-success");
-            statusEl.textContent = dict.form_status_ok;
+            statusEl.textContent = "Message sent successfully. We’ll get back to you soon.";
           } else {
             statusEl.classList.add("is-error");
-            statusEl.textContent = dict.form_status_err;
+            statusEl.textContent = "Something went wrong. Please try again, or use the Contact Page.";
           }
         } catch (err) {
           statusEl.classList.add("is-error");
-          statusEl.textContent = dict.form_status_net;
+          statusEl.textContent = "Network error. Please try again, or use the Contact Page.";
         } finally {
           if (submitBtn) submitBtn.disabled = false;
         }
@@ -352,14 +230,124 @@
     });
   }
 
+  /* =========================
+     PHASE 5: THEME TOGGLE (Dark/Light)
+  ========================= */
+  function initTheme() {
+    const btn = $("#themeToggle");
+    const key = "nippu_theme";
+
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const saved = localStorage.getItem(key);
+    const startTheme = saved || (prefersDark ? "dark" : "light");
+
+    document.body.setAttribute("data-theme", startTheme);
+
+    const setIcon = () => {
+      if (!btn) return;
+      const dark = document.body.getAttribute("data-theme") === "dark";
+      btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      btn.innerHTML = dark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    };
+
+    setIcon();
+
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      const current = document.body.getAttribute("data-theme") || "light";
+      const next = current === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", next);
+      localStorage.setItem(key, next);
+      setIcon();
+    });
+  }
+
+  /* =========================
+     PHASE 5: LOCALIZATION (EN/FI)
+     - Lightweight, page-safe
+     - Extend dictionary anytime
+  ========================= */
+  function initI18n() {
+    const select = $("#langSelect");
+    const key = "nippu_lang";
+
+    const dict = {
+      en: {
+        nav_about: "About",
+        nav_why: "Why",
+        nav_services: "Services",
+        nav_how: "How It Works",
+        nav_testimonials: "Testimonials",
+        nav_contact: "Contact",
+        nav_companies: "For Companies",
+        nav_workers: "For Workers",
+        nav_process: "Process",
+        nav_dashboard: "Dashboard",
+        nav_insights: "Insights",
+        nav_case: "Case Studies",
+        nav_contactpage: "Contact Page",
+        hero_title: "Connecting Skilled Workers",
+        hero_sub: "Verified workers. Clear process. Reliable staffing for teams that need results — not delays.",
+        hero_cta_company: "Hire Workers",
+        hero_cta_worker: "Join as a Worker",
+        hero_cta_process: "See the Process",
+        trust_strip: "Supporting teams across logistics, construction, operations, and technical roles",
+        cta_title: "Ready for reliable staffing?",
+        cta_sub: "Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step."
+      },
+      fi: {
+        nav_about: "Tietoa",
+        nav_why: "Miksi",
+        nav_services: "Palvelut",
+        nav_how: "Miten toimii",
+        nav_testimonials: "Arviot",
+        nav_contact: "Yhteys",
+        nav_companies: "Yrityksille",
+        nav_workers: "Työntekijöille",
+        nav_process: "Prosessi",
+        nav_dashboard: "Hallinta",
+        nav_insights: "Näkemykset",
+        nav_case: "Case-tarinat",
+        nav_contactpage: "Yhteyssivu",
+        hero_title: "Yhdistämme Osaajat",
+        hero_sub: "Varmistetut tekijät. Selkeä prosessi. Luotettava henkilöstö nopeasti — ilman viiveitä.",
+        hero_cta_company: "Palkkaa tekijöitä",
+        hero_cta_worker: "Liity työntekijäksi",
+        hero_cta_process: "Katso prosessi",
+        trust_strip: "Tuemme tiimejä logistiikassa, rakentamisessa, operaatioissa ja teknisissä rooleissa",
+        cta_title: "Valmiina luotettavaan henkilöstöön?",
+        cta_sub: "Valitse sinulle sopiva polku — yritys tai työntekijä — ja ohjaamme seuraavan askeleen."
+      }
+    };
+
+    const apply = (lang) => {
+      const map = dict[lang] || dict.en;
+      $$("[data-i18n]").forEach((el) => {
+        const k = el.getAttribute("data-i18n");
+        if (map[k]) el.textContent = map[k];
+      });
+    };
+
+    const saved = localStorage.getItem(key) || "en";
+    if (select) select.value = saved;
+    apply(saved);
+
+    if (!select) return;
+    select.addEventListener("change", () => {
+      const lang = select.value || "en";
+      localStorage.setItem(key, lang);
+      apply(lang);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
-    initTheme();
-    initLanguage();
     initNav();
     initHeroSlider();
     initReveal();
     initActiveNav();
     initPrefillContact();
     initSmartForms();
+    initTheme();
+    initI18n();
   });
 })();
