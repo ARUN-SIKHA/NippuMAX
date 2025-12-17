@@ -262,6 +262,11 @@ h3,h4{letter-spacing:-0.01em}
 .nav-toggle.is-open .nav-toggle-bars::before{ top:0; transform: rotate(45deg); }
 .nav-toggle.is-open .nav-toggle-bars::after{ top:0; transform: rotate(-45deg); }
 
+/* Theme icon swap: moon (light) -> sun (dark) */
+.theme-icon-sun { display: none; }
+body[data-theme="dark"] .theme-icon-moon { display: none; }
+body[data-theme="dark"] .theme-icon-sun  { display: inline-block; }
+
 /* Keep desktop nav from getting cramped */
 @media (max-width: 1120px){
   .nav a{ font-size: 13px; padding: 9px 9px; }
