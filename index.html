@@ -13,48 +13,55 @@
 <body data-animate data-theme="light">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
-        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
-        <span class="brand-text">NippuKoodi</span>
-      </a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+      <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+      <span class="brand-text">NippuKoodi</span>
+    </a>
 
-      <div class="nav-wrap">
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-          <span class="nav-toggle-bars"></span>
-        </button>
+    <nav class="nav" id="siteNav" aria-label="Main navigation">
+      <!-- Primary links (kept visible on desktop) -->
+      <a href="index.html#about">About</a>
+      <a href="index.html#why">Why</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#contact">Contact</a>
 
-        <nav class="nav" id="siteNav" aria-label="Main navigation">
-          <a href="#about" data-i18n="nav_about">About</a>
-          <a href="#why" data-i18n="nav_why">Why</a>
-          <a href="#services" data-i18n="nav_services">Services</a>
-          <a href="#how" data-i18n="nav_how">How It Works</a>
-          <a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a>
-          <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <!-- “More” keeps desktop ONE-LINE even with many links -->
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
+          <a href="companies.html">For Companies</a>
+          <a href="workers.html">For Workers</a>
+          <a href="process.html">Process</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="insights.html">Insights</a>
+          <a href="case-studies.html">Case Studies</a>
+        </div>
+      </details>
 
-          <a href="companies.html" data-i18n="nav_companies">For Companies</a>
-          <a href="workers.html" data-i18n="nav_workers">For Workers</a>
-          <a href="process.html" data-i18n="nav_process">Process</a>
-          <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
-          <a href="insights.html" data-i18n="nav_insights">Insights</a>
-          <a href="case-studies.html" data-i18n="nav_case">Case Studies</a>
+      <a class="nav-cta" href="support.html">Contact Page</a>
+    </nav>
 
-          <a class="nav-cta" href="support.html" data-i18n="nav_contactpage">Contact Page</a>
-        </nav>
-      </div>
+    <!-- Right-side actions (language + theme + hamburger) -->
+    <div class="header-actions">
+      <button class="icon-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        EN <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </button>
 
-      <div class="header-tools">
-        <select class="lang-select" id="langSelect" aria-label="Language">
-          <option value="en">EN</option>
-          <option value="fi">FI</option>
-        </select>
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-      </div>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+      </button>
+
+      <!-- Hamburger is now NEXT to language/theme (not in the middle) -->
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+        <span class="nav-toggle-bars"></span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
   <main id="main">
 
