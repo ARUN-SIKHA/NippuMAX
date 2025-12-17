@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arun-sikha.github.io/NippuMAX/sitemap.xml
