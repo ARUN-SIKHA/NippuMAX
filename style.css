@@ -793,3 +793,83 @@ body[data-animate] .reveal.is-visible{
     transform: none !important;
   }
 }
+
+/* =========================
+   PHASE 5 PATCH — overflow collapse + header actions layering
+   (ADD AT END OF FILE — do NOT delete existing CSS)
+========================= */
+
+/* Ensure nav column can shrink and not get covered */
+.header-inner { min-width: 0; }
+.nav { min-width: 0; }
+
+/* Always keep header actions clickable and above nav */
+.header-actions{
+  position: relative;
+  z-index: 1102;
+}
+
+/* Nav sits below header actions in stacking */
+.nav{
+  position: relative;
+  z-index: 1100;
+}
+
+/* When JS decides nav is "collapsed" (overflow OR mobile),
+   force hamburger visible + turn nav into overlay */
+.site-header.is-collapsed .nav-toggle{
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* In collapsed mode, stop desktop spread layout and use overlay menu */
+.site-header.is-collapsed .nav{
+  position: fixed !important;
+  left: 16px;
+  right: 16px;
+  top: calc(var(--header-h) + 10px);
+  max-width: 560px;
+  margin: 0 auto;
+
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: var(--s-2);
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 6px;
+
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  visibility: hidden;
+
+  z-index: 1101;
+
+  transition: opacity 220ms ease, transform 220ms ease, visibility 0s linear 220ms;
+}
+
+/* Open state */
+.site-header.is-collapsed .nav.is-open{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 0s;
+}
+
+/* CTA behaves normally inside overlay */
+.site-header.is-collapsed .nav .nav-cta{
+  margin-left: 0 !important;
+  text-align: center;
+}
+
+/* Keep links comfy in overlay */
+.site-header.is-collapsed .nav a{
+  padding: 12px 12px;
+}
