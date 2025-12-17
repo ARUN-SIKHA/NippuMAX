@@ -1,353 +1,243 @@
-(function () {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+/* ===== Phase 5 Header Layout + One-line Desktop Nav ===== */
 
-  /* =========================
-     NAV (mobile)
-  ========================= */
-  function initNav() {
-    const toggle = $("#navToggle");
-    const nav = $("#siteNav");
-    if (!toggle || !nav) return;
+/* Make sure these exist (light mode defaults) */
+:root{
+  --page-bg:#ffffff;
+  --page-text:#0e1425;
+  --muted:#5b647a;
+  --header-bg: rgba(255,255,255,.92);
+  --header-text:#0e1425;
+  --footer-bg:#ffffff;
+  --footer-text:#5b647a;
+  --chip-bg: rgba(11,91,211,.08);
+  --chip-text:#192033;
+}
 
-    const setOpen = (open) => {
-      nav.classList.toggle("is-open", open);
-      toggle.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    };
+/* Dark theme (optional but fixes “invisible” issues) */
+[data-theme="dark"]{
+  --page-bg:#0b1020;
+  --page-text:#eef2ff;
+  --muted: rgba(238,242,255,.72);
+  --header-bg: rgba(11,16,32,.72);
+  --header-text:#eef2ff;
+  --footer-bg:#0b1020;
+  --footer-text: rgba(238,242,255,.72);
+  --chip-bg: rgba(255,255,255,.10);
+  --chip-text:#eef2ff;
+}
 
-    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
-    $$("#siteNav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+body{
+  background: var(--page-bg);
+  color: var(--page-text);
+}
 
-    document.addEventListener("click", (e) => {
-      if (!nav.classList.contains("is-open")) return;
-      const within = nav.contains(e.target) || toggle.contains(e.target);
-      if (!within) setOpen(false);
-    });
+/* HEADER */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--header-bg);
+  color: var(--header-text);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(16,24,40,.06);
+}
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setOpen(false);
-    });
+.header-inner{
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* brand | nav | actions */
+  align-items: center;
+  gap: var(--s-4);
+}
+
+/* NAV desktop: one row, spread out */
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* spreads items like your photo 2 */
+  gap: clamp(10px, 2vw, 18px);
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.nav a{
+  font-weight: 850;
+  font-size: 14px;
+  color: var(--chip-text);
+  padding: 10px 10px;
+  border-radius: 12px;
+  line-height: 1;
+  transition: background 160ms var(--ease-out), color 160ms var(--ease-out);
+}
+.nav a:hover{ background: var(--chip-bg); }
+
+.nav .nav-cta{
+  background: var(--primary);
+  color:#fff;
+  padding: 10px 14px;
+}
+.nav .nav-cta:hover{ background: var(--primary2); }
+
+/* “More” dropdown */
+.nav-more{
+  position: relative;
+}
+.nav-more summary{
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 850;
+  font-size: 14px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  color: var(--chip-text);
+}
+.nav-more summary::-webkit-details-marker{ display:none; }
+.nav-more summary:hover{ background: var(--chip-bg); }
+
+.nav-more-menu{
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 220px;
+  background: var(--page-bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 8px;
+  display: grid;
+  gap: 4px;
+}
+.nav-more[open] .nav-more-menu{ animation: fadeIn 120ms ease-out; }
+
+.nav-more-menu a{
+  padding: 10px 10px;
+  border-radius: 12px;
+  color: var(--page-text);
+}
+.nav-more-menu a:hover{
+  background: var(--chip-bg);
+}
+
+@keyframes fadeIn{
+  from{ opacity: 0; transform: translateY(-4px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Right side actions */
+.header-actions{
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.icon-btn{
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--page-bg);
+  color: var(--page-text);
+  font-weight: 850;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hamburger button (now lives in header-actions) */
+.nav-toggle{
+  display: none; /* desktop hidden */
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  background: var(--page-bg);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.nav-toggle-bars{
+  display:block;
+  width:18px; height:2px;
+  background: currentColor;
+  margin:0 auto;
+  position:relative;
+  transition: background 180ms ease;
+}
+.nav-toggle-bars::before,.nav-toggle-bars::after{
+  content:"";
+  position:absolute; left:0;
+  width:18px; height:2px;
+  background: currentColor;
+  transition: transform 180ms ease, top 180ms ease;
+}
+.nav-toggle-bars::before{ top:-6px; }
+.nav-toggle-bars::after{ top:6px; }
+
+.nav-toggle.is-open .nav-toggle-bars{ background: transparent; }
+.nav-toggle.is-open .nav-toggle-bars::before{ top:0; transform: rotate(45deg); }
+.nav-toggle.is-open .nav-toggle-bars::after{ top:0; transform: rotate(-45deg); }
+
+/* Mobile: collapse nav into overlay, hamburger on right */
+@media (max-width: 980px){
+  .header-inner{
+    grid-template-columns: auto 1fr auto;
   }
 
-  /* =========================
-     HERO SLIDER
-  ========================= */
-  function preloadImages(urls) {
-    return Promise.all(
-      urls.map(
-        (url) =>
-          new Promise((resolve) => {
-            const img = new Image();
-            img.onload = () => resolve({ url, ok: true });
-            img.onerror = () => resolve({ url, ok: false });
-            img.src = url;
-          })
-      )
-    );
+  .nav-toggle{ display: inline-flex; align-items:center; justify-content:center; }
+
+  .nav{
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    top: calc(var(--header-h) + 10px);
+
+    background: var(--page-bg);
+    color: var(--page-text);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: var(--s-2);
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+
+    transition: opacity 220ms ease, transform 220ms ease, visibility 0s linear 220ms;
   }
 
-  function initHeroSlider() {
-    const slides = $$(".hero-slide");
-    if (!slides.length) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const slide1 = $("#slide1img");
-    if (slide1) {
-      slide1.addEventListener(
-        "error",
-        () => {
-          const fallback = slide1.getAttribute("data-fallback");
-          if (fallback && !slide1.src.includes(fallback)) slide1.src = fallback;
-        },
-        { once: true }
-      );
-    }
-
-    const imgs = slides
-      .map((s) => $("img", s))
-      .filter(Boolean)
-      .map((img) => img.getAttribute("src"));
-
-    preloadImages(imgs).finally(() => {
-      let index = 0;
-      slides.forEach((s, i) => s.classList.toggle("is-active", i === 0));
-      if (reduceMotion) return;
-
-      const intervalMs = 4500;
-      setInterval(() => {
-        slides[index].classList.remove("is-active");
-        index = (index + 1) % slides.length;
-        slides[index].classList.add("is-active");
-      }, intervalMs);
-    });
+  .nav.is-open{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 220ms ease, transform 220ms ease, visibility 0s;
   }
 
-  /* =========================
-     REVEAL
-  ========================= */
-  function initReveal() {
-    if (!document.body.hasAttribute("data-animate")) return;
-
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
-
-    const targets = $$(".section, .site-footer, .cta-strip, .page-hero");
-    targets.forEach((el) => el.classList.add("reveal"));
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
-    );
-
-    targets.forEach((el) => io.observe(el));
+  .nav-more{
+    width: 100%;
   }
-
-  /* =========================
-     ACTIVE NAV (index anchors)
-  ========================= */
-  function initActiveNav() {
-    const nav = document.getElementById("siteNav");
-    if (!nav) return;
-
-    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
-    if (!links.length) return;
-
-    const sections = links
-      .map((a) => document.querySelector(a.getAttribute("href")))
-      .filter(Boolean);
-
-    if (!sections.length) return;
-
-    const setActive = (id) => {
-      links.forEach((a) => {
-        a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`);
-      });
-    };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible && visible.target && visible.target.id) {
-          setActive(visible.target.id);
-        }
-      },
-      { threshold: [0.15, 0.25, 0.4, 0.6], rootMargin: "-15% 0px -70% 0px" }
-    );
-
-    sections.forEach((s) => io.observe(s));
-
-    const hash = window.location.hash.replace("#", "");
-    if (hash) setActive(hash);
-    else setActive(sections[0].id);
+  .nav-more-menu{
+    position: static;
+    min-width: auto;
+    box-shadow: none;
+    border-radius: 12px;
+    margin-top: 6px;
   }
+}
 
-  /* =========================
-     PREFILL CONTACT (URL params)
-  ========================= */
-  function initPrefillContact() {
-    const role = $("#role");
-    const topic = $("#topic");
-    if (!role && !topic) return;
-
-    const params = new URLSearchParams(window.location.search);
-    const roleParam = params.get("role");
-    const topicParam = params.get("topic");
-
-    if (role && roleParam) {
-      const match = Array.from(role.options).find((o) => o.value.toLowerCase() === roleParam.toLowerCase());
-      if (match) role.value = match.value;
-    }
-
-    if (topic && topicParam) {
-      const match = Array.from(topic.options).find((o) => o.value.toLowerCase() === topicParam.toLowerCase());
-      if (match) topic.value = match.value;
-    }
-  }
-
-  /* =========================
-     SMART FORMS (Formspree AJAX)
-  ========================= */
-  function initSmartForms() {
-    const forms = $$("form[data-formspree]");
-    if (!forms.length) return;
-
-    forms.forEach((form) => {
-      const statusEl =
-        form.querySelector(".form-status") ||
-        (() => {
-          const p = document.createElement("p");
-          p.className = "form-status";
-          p.setAttribute("aria-live", "polite");
-          form.appendChild(p);
-          return p;
-        })();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-
-      form.addEventListener("submit", async (e) => {
-        if (!window.fetch) return; // fallback to normal submit
-
-        e.preventDefault();
-        statusEl.classList.remove("is-success", "is-error");
-        statusEl.textContent = "Sending…";
-
-        if (submitBtn) submitBtn.disabled = true;
-
-        try {
-          const res = await fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: { Accept: "application/json" },
-          });
-
-          if (res.ok) {
-            form.reset();
-            statusEl.classList.add("is-success");
-            statusEl.textContent = "Message sent successfully. We’ll get back to you soon.";
-          } else {
-            statusEl.classList.add("is-error");
-            statusEl.textContent = "Something went wrong. Please try again, or use the Contact Page.";
-          }
-        } catch (err) {
-          statusEl.classList.add("is-error");
-          statusEl.textContent = "Network error. Please try again, or use the Contact Page.";
-        } finally {
-          if (submitBtn) submitBtn.disabled = false;
-        }
-      });
-    });
-  }
-
-  /* =========================
-     PHASE 5: THEME TOGGLE (Dark/Light)
-  ========================= */
-  function initTheme() {
-    const btn = $("#themeToggle");
-    const key = "nippu_theme";
-
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const saved = localStorage.getItem(key);
-    const startTheme = saved || (prefersDark ? "dark" : "light");
-
-    document.body.setAttribute("data-theme", startTheme);
-
-    const setIcon = () => {
-      if (!btn) return;
-      const dark = document.body.getAttribute("data-theme") === "dark";
-      btn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-      btn.innerHTML = dark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-    };
-
-    setIcon();
-
-    if (!btn) return;
-    btn.addEventListener("click", () => {
-      const current = document.body.getAttribute("data-theme") || "light";
-      const next = current === "dark" ? "light" : "dark";
-      document.body.setAttribute("data-theme", next);
-      localStorage.setItem(key, next);
-      setIcon();
-    });
-  }
-
-  /* =========================
-     PHASE 5: LOCALIZATION (EN/FI)
-     - Lightweight, page-safe
-     - Extend dictionary anytime
-  ========================= */
-  function initI18n() {
-    const select = $("#langSelect");
-    const key = "nippu_lang";
-
-    const dict = {
-      en: {
-        nav_about: "About",
-        nav_why: "Why",
-        nav_services: "Services",
-        nav_how: "How It Works",
-        nav_testimonials: "Testimonials",
-        nav_contact: "Contact",
-        nav_companies: "For Companies",
-        nav_workers: "For Workers",
-        nav_process: "Process",
-        nav_dashboard: "Dashboard",
-        nav_insights: "Insights",
-        nav_case: "Case Studies",
-        nav_contactpage: "Contact Page",
-        hero_title: "Connecting Skilled Workers",
-        hero_sub: "Verified workers. Clear process. Reliable staffing for teams that need results — not delays.",
-        hero_cta_company: "Hire Workers",
-        hero_cta_worker: "Join as a Worker",
-        hero_cta_process: "See the Process",
-        trust_strip: "Supporting teams across logistics, construction, operations, and technical roles",
-        cta_title: "Ready for reliable staffing?",
-        cta_sub: "Choose the flow that fits you — company hiring or worker joining — and we’ll guide the next step."
-      },
-      fi: {
-        nav_about: "Tietoa",
-        nav_why: "Miksi",
-        nav_services: "Palvelut",
-        nav_how: "Miten toimii",
-        nav_testimonials: "Arviot",
-        nav_contact: "Yhteys",
-        nav_companies: "Yrityksille",
-        nav_workers: "Työntekijöille",
-        nav_process: "Prosessi",
-        nav_dashboard: "Hallinta",
-        nav_insights: "Näkemykset",
-        nav_case: "Case-tarinat",
-        nav_contactpage: "Yhteyssivu",
-        hero_title: "Yhdistämme Osaajat",
-        hero_sub: "Varmistetut tekijät. Selkeä prosessi. Luotettava henkilöstö nopeasti — ilman viiveitä.",
-        hero_cta_company: "Palkkaa tekijöitä",
-        hero_cta_worker: "Liity työntekijäksi",
-        hero_cta_process: "Katso prosessi",
-        trust_strip: "Tuemme tiimejä logistiikassa, rakentamisessa, operaatioissa ja teknisissä rooleissa",
-        cta_title: "Valmiina luotettavaan henkilöstöön?",
-        cta_sub: "Valitse sinulle sopiva polku — yritys tai työntekijä — ja ohjaamme seuraavan askeleen."
-      }
-    };
-
-    const apply = (lang) => {
-      const map = dict[lang] || dict.en;
-      $$("[data-i18n]").forEach((el) => {
-        const k = el.getAttribute("data-i18n");
-        if (map[k]) el.textContent = map[k];
-      });
-    };
-
-    const saved = localStorage.getItem(key) || "en";
-    if (select) select.value = saved;
-    apply(saved);
-
-    if (!select) return;
-    select.addEventListener("change", () => {
-      const lang = select.value || "en";
-      localStorage.setItem(key, lang);
-      apply(lang);
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    initNav();
-    initHeroSlider();
-    initReveal();
-    initActiveNav();
-    initPrefillContact();
-    initSmartForms();
-    initTheme();
-    initI18n();
-  });
-})();
+/* FOOTER visibility fix for both themes */
+.site-footer{
+  background: var(--footer-bg);
+  border-top: 1px solid var(--line);
+}
+.site-footer p,
+.footer-links a{
+  color: var(--footer-text);
+}
