@@ -272,9 +272,58 @@ body[data-theme="dark"] .theme-icon-sun  { display: inline-block; }
   .nav a{ font-size: 13px; padding: 9px 9px; }
 }
 
-/* Mobile: collapse nav into overlay, hamburger stays on the right */
-@media (max-width: 980px){
-  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+/* Hamburger: only visible when header is collapsed (overflow OR small screen) */
+.nav-toggle{ display:none; }
+.site-header.is-collapsed .nav-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Overlay nav only when collapsed */
+.site-header.is-collapsed .nav{
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  top: calc(var(--header-h) + 10px);
+
+  background: var(--surface);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:var(--s-2);
+
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:6px;
+
+  opacity:0;
+  transform: translateY(-8px);
+  pointer-events:none;
+  visibility:hidden;
+
+  transition: opacity 220ms ease, transform 220ms ease, visibility 0s linear 220ms;
+
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.site-header.is-collapsed .nav.is-open{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+  visibility:visible;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 0s;
+}
+
+/* In collapsed mode, CTA should not be pushed away */
+.site-header.is-collapsed .nav .nav-cta{
+  margin-left: 0;
+  text-align:center;
+}
+
 
   .nav{
     position: fixed;
