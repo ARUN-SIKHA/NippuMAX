@@ -25,29 +25,55 @@
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
-        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" width="34" height="34" decoding="async" />
-        <span class="brand-text">NippuKoodi</span>
-      </a>
+ <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+      <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+      <span class="brand-text">NippuKoodi</span>
+    </a>
 
-      <div class="nav-wrap">
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
-          <span class="nav-toggle-bars" aria-hidden="true"></span>
-        </button>
+    <nav class="nav" id="siteNav" aria-label="Main navigation">
+      <!-- Primary links (kept visible on desktop) -->
+      <a href="index.html#about">About</a>
+      <a href="index.html#why">Why</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#contact">Contact</a>
 
-        <nav class="nav" id="siteNav" aria-label="Main navigation">
-          <a href="index.html#about">About</a>
-          <a href="index.html#services">Services</a>
-          <a href="process.html">Process</a>
+      <!-- “More” keeps desktop ONE-LINE even with many links -->
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-menu">
           <a href="companies.html">For Companies</a>
           <a href="workers.html">For Workers</a>
-          <a class="nav-cta" href="support.html">Contact Page</a>
-        </nav>
-      </div>
+          <a href="process.html">Process</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="insights.html">Insights</a>
+          <a href="case-studies.html">Case Studies</a>
+        </div>
+      </details>
+
+      <a class="nav-cta" href="support.html">Contact Page</a>
+    </nav>
+
+    <!-- Right-side actions (language + theme + hamburger) -->
+    <div class="header-actions">
+      <button class="icon-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        EN <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </button>
+
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <i class="fa-solid fa-gear" aria-hidden="true"></i>
+      </button>
+
+      <!-- Hamburger is now NEXT to language/theme (not in the middle) -->
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+        <span class="nav-toggle-bars"></span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
   <main id="main">
     <section class="page-hero">
