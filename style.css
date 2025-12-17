@@ -873,3 +873,8 @@ body[data-animate] .reveal.is-visible{
 .site-header.is-collapsed .nav a{
   padding: 12px 12px;
 }
+
+/* Make hero tagline readable in BOTH themes */
+.hero p{
+  color: rgba(255,255,255,.92) !important;
+}
