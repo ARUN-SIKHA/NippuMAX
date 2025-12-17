@@ -43,10 +43,11 @@
         EN <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
       </button>
 
-      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+     <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
   <i class="fa-solid fa-moon theme-icon theme-icon-moon" aria-hidden="true"></i>
   <i class="fa-solid fa-sun theme-icon theme-icon-sun" aria-hidden="true"></i>
 </button>
+
 
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
         <span class="nav-toggle-bars"></span>
@@ -378,6 +379,30 @@
         </form>
       </div>
     </section>
+
+    <!-- CHOOSE YOUR PATH (restored) -->
+<section class="section section-muted" id="path" aria-label="Choose your path">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="path.title">Choose your path</h2>
+      <p data-i18n="path.sub">Pick the flow that fits you — company hiring or worker joining.</p>
+    </div>
+
+    <div class="grid-3" style="grid-template-columns: repeat(2, minmax(0,1fr));">
+      <a class="card" href="companies.html" style="display:block;">
+        <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+        <h3 data-i18n="path.company">For Companies</h3>
+        <p data-i18n="path.company.sub">Request vetted workers with clear expectations.</p>
+      </a>
+
+      <a class="card" href="workers.html" style="display:block;">
+        <div class="card-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+        <h3 data-i18n="path.worker">For Workers</h3>
+        <p data-i18n="path.worker.sub">Join the vetted workforce with reliable placements.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
     <!-- CTA STRIP -->
     <section class="cta-strip" aria-label="Primary call to action">
