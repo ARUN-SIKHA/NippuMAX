@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NippuKoodi — Insights</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+  <link rel="stylesheet" href="style.css?v=1005" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body data-animate>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="NippuKoodi Home">
+        <img class="brand-logo" src="logo.png" alt="NippuKoodi logo" />
+        <span class="brand-text">NippuKoodi</span>
+      </a>
+
+      <div class="nav-wrap">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+          <span class="nav-toggle-bars"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Main navigation">
+          <a href="index.html#about" data-i18n="nav_about">About</a>
+          <a href="companies.html" data-i18n="nav_companies">For Companies</a>
+          <a href="workers.html" data-i18n="nav_workers">For Workers</a>
+          <a href="process.html" data-i18n="nav_process">Process</a>
+          <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
+          <a href="blog.html" aria-current="page" data-i18n="nav_blog">Insights</a>
+          <a href="case-studies.html" data-i18n="nav_cases">Case Studies</a>
+          <a class="nav-cta" href="support.html" data-i18n="nav_contact_page">Contact Page</a>
+        </nav>
+      </div>
+
+      <div class="header-utils" aria-label="Header controls">
+        <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="lang-pill" id="langToggle" type="button" aria-label="Switch language">
+          <i class="fa-solid fa-language"></i>
+          <span>EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Insights</h1>
+        <p>Short, practical notes on staffing clarity, reliability, and how to reduce hiring uncertainty.</p>
+
+        <div class="page-actions">
+          <a class="btn btn-primary" href="support.html">Ask a question</a>
+          <a class="btn btn-ghost" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-head">
+          <h2>Latest posts</h2>
+          <p>No filler. Just high-signal guidance.</p>
+        </div>
+
+        <div class="post-grid">
+          <article class="post-card">
+            <div class="post-meta">
+              <span class="badge"><i class="fa-solid fa-shield"></i> Trust</span>
+              <span>4 min</span>
+            </div>
+            <h3>What “vetted” should mean (and what it shouldn’t)</h3>
+            <p>How to avoid empty promises and define verification in a way teams can trust.</p>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <span class="badge"><i class="fa-solid fa-bolt"></i> Speed</span>
+              <span>3 min</span>
+            </div>
+            <h3>Fast staffing without cutting safety</h3>
+            <p>How disciplined intake and expectations reduce delay more than “rush hiring”.</p>
+          </article>
+
+          <article class="post-card">
+            <div class="post-meta">
+              <span class="badge"><i class="fa-solid fa-people-group"></i> Fit</span>
+              <span>5 min</span>
+            </div>
+            <h3>Why “fit” beats “availability” long-term</h3>
+            <p>A practical framework to align readiness, onboarding clarity, and role success.</p>
+          </article>
+        </div>
+
+        <div class="cta-inline">
+          <a class="btn btn-primary" href="support.html">Contact us</a>
+          <a class="btn btn-ghost" href="case-studies.html">See case studies</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> NippuKoodi. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="blog.html" aria-current="page">Insights</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="support.html">Contact Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
